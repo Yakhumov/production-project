@@ -9,6 +9,12 @@
 
 .links {
   margin-left: auto;
+  display: flex;
+  
+}
+
+.links a {
+  text-decoration: none;
 }
 
 .mainLink {
