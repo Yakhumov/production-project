@@ -1,5 +1,5 @@
 import React from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
+import { classNames } from '../../lib/classNames/classNames';
 import './Loader.scss';
 
 interface LoaderProps {
@@ -8,7 +8,7 @@ interface LoaderProps {
 
 export const Loader: React.FC<LoaderProps> = ({ className }) => {
   return (
-    <div className={classNames('lds-ellipsis', {}, [className])}>
+    <div className={classNames('lds-ellipsis', {}, [])}>
       <div />
       <div />
       <div />

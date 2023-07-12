@@ -1,6 +1,6 @@
-import { classNames } from "shared/lib/classNames/classNames";
+import { classNames } from "../../lib/classNames/classNames";
 import { Loader } from "../Loaders/Loader";
-import cls from "./PageLoader.module.scss";
+import cls from './PageLoader.module.scss'
 
 interface PageLoaderProps {
   className?: string;

@@ -1,5 +1,6 @@
+import {classNames} from './classNames'
 
-import { classNames } from './classNames';
+
 
 describe('classNames', () => {
     test('with only first param', () => {
@@ -34,7 +35,7 @@ describe('classNames', () => {
         const expected = 'someClass class1 class2 hovered';
         expect(classNames(
             'someClass',
-            { hovered: true, scrollable: undefined },
+            { hovered: true },
             ['class1', 'class2'],
         )).toBe(expected);
     });
