@@ -10,23 +10,9 @@ interface NavbarProps {
 export const Navbar: React.FC<NavbarProps> = ({ className }) => {
   return (
     <div className={classNames(cls.Navbar, {}, [className])}>
-      <div className={cls.links}>
-        <div>
-       
-          <AppLink
-            theme={AppLinkTheme.SECONDARY}
-            to="/"
-            className={cls.mainLink}
-          >
-            Главная
-          </AppLink>
-        </div>
-        <div>
-          <AppLink theme={AppLinkTheme.SECONDARY} to="/about">
-            О сайте
-          </AppLink>
-        </div>
-      </div>
+    <div className={cls.links}>
+        /
     </div>
+</div>
   );
 };

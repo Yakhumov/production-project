@@ -9,6 +9,21 @@
 
 .collapsed{
     width: var(--sidebar-with-collapsed);
+
+    .switchers{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .lang{
+        margin-left: 0;
+    }
+
+    .link {
+        opacity: 0;
+        transition: 0.2s opacity;
+        width: 0;
+    }
 }
 
 .switchers{
@@ -20,6 +35,33 @@
 }
 
 
-.lang{
-    margin-left:  15px;
+.collapsedBtn{
+    position: absolute;
+    right: -40px;
+    bottom: 40px;
+}
+
+
+.items{
+    display: flex;
+    margin-left: 25px;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.link{
+    margin-top: 10px;
+    margin-left:  20px;
+}
+
+
+.item {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+}
+
+
+.icon {
+    fill: var(--inverted-primary-color);
 }
