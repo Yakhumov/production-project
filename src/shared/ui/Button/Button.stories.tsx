@@ -66,6 +66,12 @@ OutlineDark.args = {
     theme: ThemeButton.OUTLINE,
 };
 
+export const outlineInverted = Template.bind({});
+outlineInverted.args = {
+    children: 'Text',
+    theme: ThemeButton.OUTLINE_INVERTED,
+};
+
 export const Square = Template.bind({});
 Square.args = {
     children: '>',

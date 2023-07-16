@@ -5,6 +5,7 @@ import { classNames } from 'shared/lib/classNames/classNames';
 export enum ThemeButton  {
     CLEAR = 'clear',
     OUTLINE = 'outline',
+    OUTLINE_INVERTED = 'outlineInverted',
     BACKGROUND = 'background',
     BACKGROUND_INVERTED = 'background_inverted'
 }
@@ -12,7 +13,7 @@ export enum ThemeButton  {
 export enum ButtonSize {
   M = 'size_m',
   L = 'size_l',
-  XL = 'size_xl',
+  XL = 'size_xl', 
 }
 
 interface ButtonProps extends ButtonHTMLAttributes <HTMLButtonElement> {
