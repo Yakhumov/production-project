@@ -1,6 +1,7 @@
 import { classNames } from "shared/lib/classNames/classNames";
 import React, {
   ReactNode,
+  lazy,
   useCallback,
   useEffect,
   useRef,
@@ -15,12 +16,14 @@ interface ModalProps {
   children?: ReactNode;
   isOpen?: boolean;
   onClose?: () => void;
+  lazy: boolean
 }
 
 export const Modal = (props: ModalProps) => {
   const { className, children, isOpen, onClose } = props;
 
   const [isClosing, setIsClosing] = useState(false);
+  const [isMounted, setIsMounted] = useState(false)
   const timerRef = useRef<ReturnType<typeof setTimeout>>();
   const { theme } = useTheme();
 
@@ -43,6 +46,12 @@ export const Modal = (props: ModalProps) => {
     [closeHandler]
   );
 
+  useEffect(()=>{
+    if(isOpen){
+      setIsMounted(true)
+    }
+  },[isOpen])
+
   const onContentClick = (e: React.MouseEvent) => {
     e.stopPropagation();
   };
@@ -61,12 +70,16 @@ export const Modal = (props: ModalProps) => {
   const mods: Record<string, boolean> = {
     [cls.opened]: isOpen,
     [cls.isClosing]: isClosing,
-    [cls[theme]]: true,
   };
+
+
+  if(lazy && !isMounted){
+    return null
+  }
 
   return (
     <Portal>
-      <div className={classNames(cls.Modal, mods, [className])}>
+      <div className={classNames(cls.Modal, mods, [className, theme])}>
         <div className={cls.overlay} onClick={closeHandler}>
           <div className={cls.content} onClick={onContentClick}>
             {children}

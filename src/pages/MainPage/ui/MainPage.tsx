@@ -8,8 +8,7 @@ const MainPage = () => {
     return (
         <div>
             
-            {t('Главная страница')}
-            <Counter/>
+            {t('Главная страница')} 
         </div>
     );
 };
