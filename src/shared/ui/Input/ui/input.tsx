@@ -24,14 +24,14 @@ export const Input = memo((props: InputProps) => {
     } = props;
     const ref = useRef<HTMLInputElement>(null);
     const [isFocused, setIsFocused] = useState(false);
-    const [caretPosition, setCaretPosition] = useState(0);
+    const [caretPosition, setCaretPosition] = useState(0);   
 
     useEffect(() => {
         if (autofocus) {
             setIsFocused(true);
             ref.current?.focus();
         }
-    }, [autofocus]);
+    }, [autofocus]); 
 
     const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         onChange?.(e.target.value);
@@ -48,10 +48,10 @@ export const Input = memo((props: InputProps) => {
 
     const onSelect = (e: any) => {
         setCaretPosition(e?.target?.selectionStart || 0);
-    };
+    }; 
 
     return (
-        <div className={classNames(cls.InputWrapper, {}, [className])}>
+        <div className={classNames(cls.InputWrapper, {}, [className])}> 
             {placeholder && (
                 <div className={cls.placeholder}>
                     {`${placeholder}>`}

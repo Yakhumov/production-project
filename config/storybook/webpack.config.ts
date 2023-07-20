@@ -1,4 +1,4 @@
-import  { RuleSetRule } from 'webpack';
+import  { DefinePlugin, RuleSetRule } from 'webpack';
 import path from 'path';
 import { buildCssLoader } from '../loaders/buildCssLoader'
 import { BuildPaths } from '../build/types/config';
@@ -16,7 +16,7 @@ export default ({ config }: {config: webpack.Configuration}) => {
     // eslint-disable-next-line no-param-reassign
     config.module.rules = config.module.rules.map((rule: RuleSetRule) => {
         if (/svg/.test(rule.test as string)) {
-            return { ...rule, exclude: /\.svg$/i };
+            return { ...rule, exclude: /\.svg$/i };   
         } 
 
         return rule;
@@ -27,6 +27,10 @@ export default ({ config }: {config: webpack.Configuration}) => {
         use: ['@svgr/webpack'],
     });
     config.module.rules.push(buildCssLoader(true));
+    
+    config.plugins.push(new DefinePlugin({
+        __IS_DEV: true
+    }))
 
     return config;
 };
