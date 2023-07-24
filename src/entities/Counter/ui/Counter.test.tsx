@@ -1,4 +1,4 @@
-import { componentRender } from "shared/lib/classNames/tests/componenRender"
+import { componentRender } from "shared/lib/tests/componenRender"
 import { screen } from "@testing-library/react"
 import { userEvent } from '@storybook/testing-library';
 import { Counter } from "./Counter"
