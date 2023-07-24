@@ -3,6 +3,7 @@ import { counterReducer } from 'entities/Counter';
 import { StateShema } from './StateShema';
 import { userReducer } from 'entities/User';
 import { createReducerManager } from './reducerManager';
+import { ProfileReducer } from 'entities/Profile/model/slice/ProfileSlice';
 
 export function createReduxStore(initialState?: StateShema,  asyncReducers?: ReducersMapObject<StateShema>,) {
 
@@ -10,6 +11,7 @@ export function createReduxStore(initialState?: StateShema,  asyncReducers?: Red
     const rootReducers: ReducersMapObject<StateShema> = {
         counter: counterReducer,
         user: userReducer,
+        profile: ProfileReducer
     };
 
     const reducerManager = createReducerManager(rootReducers);
@@ -23,5 +25,10 @@ export function createReduxStore(initialState?: StateShema,  asyncReducers?: Red
       // @ts-ignore
       store.reducerManager = reducerManager;
 
-    return store
-}
+      return store
+      
+      
+    }
+    export type AppDispatch = ReturnType<typeof createReduxStore>['dispatch'];
+
+

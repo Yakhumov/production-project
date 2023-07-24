@@ -15,19 +15,21 @@ import { getLoginPassword } from "../../model/selectors/getLoginPassword/getLogi
 import { getError } from "../../model/selectors/getError/getError";
 import { getIsLoading } from "../../model/selectors/getIsLoading/getIsLoading";
 import { DynamicModuleLoader, ReducersList } from "shared/lib/components/DynamicModelLoader/DynamicModelLoader";
+import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 
 export interface LoginFormProps {
   className?: string;
+  onSuccess: () => void
 }
 
 const initialReducers: ReducersList = {
   loginForm: loginReducer,
 };
 
-const LoginForm: React.FC<LoginFormProps> = memo(({className}) => {
+const LoginForm: React.FC<LoginFormProps> = memo(({className, onSuccess}) => {
   const { t } = useTranslation();
   
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const username = useSelector(getLoginUsername) 
   const password = useSelector(getLoginPassword)
   const error = useSelector(getError)
@@ -41,9 +43,13 @@ const LoginForm: React.FC<LoginFormProps> = memo(({className}) => {
     dispatch(loginActions.setPassword(value));
   }, [dispatch]);
 
-  const onClickLogin = useCallback(() => {
-    dispatch(LoginByUsername({ username, password }));
-  }, [dispatch, username, password]);
+
+  const onClickLogin = useCallback(async () => {
+    const result = await dispatch(LoginByUsername({ username, password }));   
+    if (result.meta.requestStatus === 'fulfilled') {
+        onSuccess(); 
+    }
+}, [onSuccess, dispatch, password, username]);
 
 
   return (

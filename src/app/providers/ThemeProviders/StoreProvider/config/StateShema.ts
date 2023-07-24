@@ -3,14 +3,14 @@ import { userShema } from "entities/User/model/types/user";
 import { LoginShema } from "features/authUser/model/types/LoginShema";
 import { CombinedState } from 'redux';
 import { ReducersMapObject, AnyAction, Reducer , EnhancedStore} from "@reduxjs/toolkit";
+import { ProfileShema } from "entities/Profile";
 
 
 export interface StateShema {
     counter: CounterShema  
-    user: userShema,
-
-    
+    user: userShema, 
     loginForm?: LoginShema
+    profile?: ProfileShema
 }
 
 
