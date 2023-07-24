@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import  { useCallback, useEffect, useState } from 'react';
 import { Button  } from 'shared/ui/Button';
 import { ThemeButton } from 'shared/ui/Button/Button';
-import { LoginModal } from 'features/authUser/ui/loginModal/LoginModal';
+import { LoginModal } from 'features/authUser/ui/LoginModal/LoginModal';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAuthData } from 'features/authUser';
 import { userActions } from 'entities/User';
@@ -16,7 +16,7 @@ interface NavbarProps {
 export const Navbar = ({ className }: NavbarProps) => {
     const { t } = useTranslation();
     const [isAuthModal, setIsAuthModal] = useState(false);
-    const authData = useSelector(getAuthData);
+    const authData = useSelector(getAuthData); 
     const dispatch = useDispatch();
 
     const onCloseModal = useCallback(() => {
@@ -29,7 +29,7 @@ export const Navbar = ({ className }: NavbarProps) => {
 
     const onLogout = useCallback(() => {
         dispatch(userActions.logout());
-    }, [dispatch]);
+    }, []);
 
     useEffect(()=>{
         dispatch(userActions.initAuthData())

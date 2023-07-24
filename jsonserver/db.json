@@ -21,8 +21,8 @@
     "users": [
       {
         "id": 1,
-        "username": "adminka",
-        "password": "12345"
+        "username": "admin",
+        "password": "123"
       }
     ],
     "profile": { "name": "typicode" }

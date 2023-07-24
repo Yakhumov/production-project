@@ -4,7 +4,7 @@ import { LoginByUsername } from '../services/LoginByUserName';
 
 const initialState: LoginShema = {
     isLoading: false,
-    username: '',
+    username: '',  
     password: '',
     error:''
 };
@@ -14,7 +14,7 @@ export const loginSlice = createSlice({
     initialState,
     reducers: {
         setUsername: (state, action: PayloadAction<string>) => {
-            state.username = action.payload;
+            state.username = action.payload; 
         },
         setPassword: (state, action: PayloadAction<string>) => {
             state.password = action.payload;
@@ -23,11 +23,11 @@ export const loginSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(LoginByUsername.pending, (state) => {
-                state.error = undefined;
+                state.error = undefined; 
                 state.isLoading = true;
             })
-            .addCase(LoginByUsername.fulfilled, (state, action) => {
-                state.isLoading = false;
+            .addCase(LoginByUsername.fulfilled, (state) => {
+                state.isLoading = false; 
             })
             .addCase(LoginByUsername.rejected, (state, action) => {
                 state.isLoading = false;
