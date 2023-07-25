@@ -4,13 +4,9 @@ import { ThemeSwitcher } from 'shared/ui/ThemeSwitcher';
 import LangSwitcher from 'shared/ui/LangSwitcher/LangSwitcher';
 import { Button, ButtonSize, ThemeButton } from 'shared/ui/Button/Button';
 import { useTranslation } from 'react-i18next';
-import { AppLink, AppLinkTheme } from 'shared/ui/Applink/AppLink';
-import { RouterPath } from 'shared/config/RouterConfig/routerConfig';
-import AboutIcon from 'shared/assets/icons/about-20-20.svg';
-import MainIcon from 'shared/assets/icons/main-20-20.svg';
 import cls from './Sidebar.module.scss';
 import { SidebarItemLists } from 'widgets/Sidebar/model/items';
-import SidebarItem from 'widgets/Sidebar/SidebarItem/SidebarItem';
+import SidebarItem from 'widgets/Sidebar/ui/SidebarItem/SidebarItem';
 import { useMemo } from 'react';
 import { memo } from 'react';
 
@@ -27,10 +23,10 @@ export const Sidebar: React.FC <SidebarProps> = memo(({className}) => {
     };
 
     const itemsList = useMemo(() => SidebarItemLists.map((item) => (
-        <SidebarItem
+        <SidebarItem 
             item={item}
             collapsed={collapsed}
-            key={item.path}
+            key={item.path} 
         />
     )), [collapsed]);
 
@@ -44,7 +40,7 @@ export const Sidebar: React.FC <SidebarProps> = memo(({className}) => {
                 onClick={onToggle}
                 className={cls.collapsedBtn}
                 theme={ThemeButton.BACKGROUND_INVERTED}
-                size={ButtonSize.L}
+                size={ButtonSize.M}
                 square
             >
                 {collapsed ? '>' : '<'}         

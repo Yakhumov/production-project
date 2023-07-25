@@ -1,4 +1,3 @@
-import { DeepPartial } from "@reduxjs/toolkit"
 import { StateShema } from "app/providers/ThemeProviders/StoreProvider/config/StateShema"
 import { getError } from "./getError"
 

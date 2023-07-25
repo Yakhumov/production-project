@@ -13,7 +13,7 @@ export interface Profile{
 
 
 export interface ProfileShema {
-    data: Profile
+    data?: Profile
     isLoading?: boolean,
     error?: string
     readonly?: boolean

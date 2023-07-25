@@ -4,17 +4,19 @@ import { LoginShema } from "features/authUser/model/types/LoginShema";
 import { CombinedState } from 'redux';
 import { ReducersMapObject, AnyAction, Reducer , EnhancedStore} from "@reduxjs/toolkit";
 import { ProfileShema } from "entities/Profile";
-
+import { NavigateOptions } from "react-router-dom";
+import { AxiosInstance } from "axios";
+import { To } from "react-router-dom";
 
 export interface StateShema {
     counter: CounterShema  
     user: userShema, 
     loginForm?: LoginShema
-    profile?: ProfileShema
+    profile: ProfileShema 
 }
 
 
-export type StateSchemaKey = keyof StateShema;
+export type StateSchemaKey = keyof StateShema; 
 
 export interface ReducerManager {
     getReducerMap: () => ReducersMapObject<StateShema>;
@@ -25,4 +27,14 @@ export interface ReducerManager {
 
 export interface ReduxStoreWithManager extends EnhancedStore<StateShema> {
     reducerManager: ReducerManager;
+}
+
+export interface ThunkExtraArg {
+    api: AxiosInstance;
+    navigate?: (to: To, options?: NavigateOptions) => void,
+}
+
+export interface ThunkConfig<T> {
+    rejectValue: T
+    extra: ThunkExtraArg
 }

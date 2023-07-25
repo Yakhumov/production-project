@@ -2,7 +2,7 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import  { memo, useCallback, useEffect, useState } from 'react';
 import { Button  } from 'shared/ui/Button';
-import { ThemeButton } from 'shared/ui/Button/Button';
+import { ButtonSize, ThemeButton } from 'shared/ui/Button/Button';
 import { LoginModal } from 'features/authUser/ui/LoginModal/LoginModal';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAuthData } from 'features/authUser';
@@ -39,7 +39,7 @@ export const Navbar: React.FC <NavbarProps> =memo(({ className }) => {
         return (
             <div className={classNames(cls.Navbar, {}, [className])}>
                 <Button
-                    theme={ThemeButton.OUTLINE_INVERTED}
+                    theme={ThemeButton.CLEAR}
                     className={cls.links}
                     onClick={onLogout}
                 >
@@ -50,15 +50,15 @@ export const Navbar: React.FC <NavbarProps> =memo(({ className }) => {
     }
 
     return (
-        <div className={classNames(cls.Navbar, {}, [className])}>
+        <div className={classNames(cls.Navbar, {}, [className])}> 
             <Button
-                theme={ThemeButton.OUTLINE_INVERTED}
+                theme={ThemeButton.CLEAR}
                 className={cls.links}
                 onClick={onShowModal}
             >
                 {t('Войти')}
             </Button>
-            <LoginModal
+            <LoginModal  
                 isOpen={isAuthModal}
                 onClose={onCloseModal}
             />

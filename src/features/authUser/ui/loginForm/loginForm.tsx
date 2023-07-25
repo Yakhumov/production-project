@@ -2,12 +2,12 @@ import React, { memo, useCallback } from "react";
 import { classNames } from "shared/lib/classNames/classNames";
 import cls from "./LoginForm.module.scss";
 import { Button } from "shared/ui/Button";
-import { ThemeButton } from "shared/ui/Button/Button";
+import { ButtonSize, ThemeButton } from "shared/ui/Button/Button";
 import { useTranslation } from "react-i18next";
 import { Input } from "shared/ui/Input";
 import { useDispatch, useSelector } from "react-redux";
 import { loginActions, loginReducer } from "features/authUser";
-import { LoginByUsername } from "features/authUser/model/services/LoginByUserName";
+import { loginByUsername } from "features/authUser";
 import { Text } from "shared/ui/Text"; 
 import { TextTheme } from "shared/ui/Text/ui/Text";
 import { getLoginUsername } from "features/authUser/model/selectors/getLoginUserName/getLoginUserName";
@@ -45,7 +45,7 @@ const LoginForm: React.FC<LoginFormProps> = memo(({className, onSuccess}) => {
 
 
   const onClickLogin = useCallback(async () => {
-    const result = await dispatch(LoginByUsername({ username, password }));   
+    const result = await dispatch(loginByUsername({ username, password }));   
     if (result.meta.requestStatus === 'fulfilled') {
         onSuccess(); 
     }
@@ -71,13 +71,13 @@ const LoginForm: React.FC<LoginFormProps> = memo(({className, onSuccess}) => {
         <Input
           className={cls.input}
           placeholder="Введите пароль"
-          type="password" 
+          type="text"  
           onChange={onChangePassword}
           value={password}
         />
         <Button
           disabled={isLoading}
-          theme={ThemeButton.OUTLINE}
+          theme={ThemeButton.CLEAR}
           className={cls.LoginBtn}
           onClick={onClickLogin}
         >

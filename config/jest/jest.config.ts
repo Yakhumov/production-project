@@ -7,7 +7,8 @@ import path from "path";
 
 export default {
     globals:{
-        __IS_DEV: true  
+        __IS_DEV: true,  
+        __API__: true 
     },
     clearMocks: true,
     testEnvironment: 'jsdom',

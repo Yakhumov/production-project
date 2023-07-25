@@ -1,4 +1,3 @@
-import { DeepPartial } from "@reduxjs/toolkit"
 import { StateShema } from "app/providers/ThemeProviders/StoreProvider/config/StateShema"
 import { getLoginUsername } from "./getLoginUserName"
 
@@ -6,6 +5,8 @@ describe('getLoginUsername', ()=>{
     test('error', ()=>{
         const state: DeepPartial<StateShema> = {
             loginForm: {
+                password: '34',
+                isLoading: true,
                 username: 'user'
             }
         }

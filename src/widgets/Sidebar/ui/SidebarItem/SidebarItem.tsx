@@ -7,7 +7,7 @@ import { RouterPath } from 'shared/config/RouterConfig/routerConfig';
 import cls from './SidebarItem.module.scss'
 import AboutIcon from 'shared/assets/icons/about-20-20.svg';
 import MainIcon from 'shared/assets/icons/main-20-20.svg';
-import { SidebarItemType } from '../model/items';
+import { SidebarItemType } from '../../model/items';
 import { classNames } from 'shared/lib/classNames/classNames';
 
 interface SidebarItemProps {  
@@ -21,12 +21,12 @@ const SidebarItem: React.FC<SidebarItemProps> = ({item, collapsed}) => {
     return (
         <AppLink
         theme={AppLinkTheme.SECONDARY}
-        to={item.path}
+        to={item.path} 
         className={classNames(cls.item, { [cls.collapsed]: collapsed })}
     >
         <item.Icon className={cls.icon} />
         <span className={cls.link}>
-            {t(item.text)}
+            {t(item.text)} 
         </span>
     </AppLink>
     );

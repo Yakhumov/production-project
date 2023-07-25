@@ -1,4 +1,3 @@
-import { DeepPartial } from "@reduxjs/toolkit";
 import { StateShema } from "app/providers/ThemeProviders/StoreProvider/config/StateShema";
 import { LoginShema } from "../types/LoginShema";
 import { loginActions, loginReducer } from "./LoginSlice";
