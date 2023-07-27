@@ -7,5 +7,8 @@ import { getProfileData } from "./model/selectors/getProfileData/getProfileData"
 import { getIsError } from "./model/selectors/getIsError/getIsError";
 import { getIsloading } from "./model/selectors/getIsloading/getIsloading";
 import { ProfileCard } from "./ui/ProfileCard";
+import { getReadOnly } from "./model/selectors/getReadOnly/getReadOnly";
+import { getProfileForm } from "./model/selectors/getProfileForm/getProfileForm";
+import { updateProfileData } from "./model/services/updateProfileData";
 
-export {Profile,ProfileShema, ProfileActions, ProfileReducer, fetchProfileData,getProfileData,getIsError,getIsloading,ProfileCard}
+export {Profile,ProfileShema,  getProfileForm,ProfileActions, ProfileReducer, getReadOnly, fetchProfileData,getProfileData,getIsError,getIsloading,ProfileCard}

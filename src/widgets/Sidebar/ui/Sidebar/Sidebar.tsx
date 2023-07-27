@@ -16,7 +16,6 @@ interface SidebarProps {
 
 export const Sidebar: React.FC <SidebarProps> = memo(({className}) => {   
     const [collapsed, setCollapsed] = useState(false);
-    const { t } = useTranslation();
 
     const onToggle = () => {
         setCollapsed((prev) => !prev);
@@ -40,7 +39,7 @@ export const Sidebar: React.FC <SidebarProps> = memo(({className}) => {
                 onClick={onToggle}
                 className={cls.collapsedBtn}
                 theme={ThemeButton.BACKGROUND_INVERTED}
-                size={ButtonSize.M}
+                size={ButtonSize.M}        
                 square
             >
                 {collapsed ? '>' : '<'}         
