@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 import { ProfileActions, getReadOnly } from "entities/Profile";
 import { useCallback } from "react";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
-import { updateProfileData } from "entities/Profile/model/services/updateProfileData";
+import { updateProfileData } from "entities/Profile/model/services/updateProfileData/updateProfileData";
 
 interface ProfilePageHeaderProps {
   className?: string;
