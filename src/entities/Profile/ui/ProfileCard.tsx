@@ -1,6 +1,5 @@
 import { Mods, classNames } from "shared/lib/classNames/classNames";
 import { useTranslation } from "react-i18next";
-import { Button, ButtonSize, ThemeButton } from "shared/ui/Button/Button";
 import { Input } from "shared/ui/Input";
 import cls from "./ProfileCard.module.scss";
 import { Profile } from "../types/Profile";
@@ -100,7 +99,7 @@ export const ProfileCard: React.FC<ProfileCardProps> = (props) => {
         />
         <Input
           value={data?.city}
-          placeholder={t("Ваша город")}
+          placeholder={t("Ваш город")}
           className={cls.input}
           onChange={onChangeCity}
           readonly={readonly}
