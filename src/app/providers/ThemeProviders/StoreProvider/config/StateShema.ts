@@ -7,12 +7,16 @@ import { ProfileShema } from "entities/Profile";
 import { NavigateOptions } from "react-router-dom";
 import { AxiosInstance } from "axios";
 import { To } from "react-router-dom";
+import { ArticlesDetailsShema } from "entities/Article";
 
 export interface StateShema {
     counter: CounterShema  
     user: userShema, 
+    
+    
     loginForm?: LoginShema
-    profile: ProfileShema 
+    profile?: ProfileShema 
+    articleDetails: ArticlesDetailsShema  
 }
 
 

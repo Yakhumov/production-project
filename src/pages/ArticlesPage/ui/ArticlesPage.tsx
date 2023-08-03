@@ -3,10 +3,12 @@ import React from 'react';
 import {useTranslation} from "react-i18next";
 import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './ArticlesPage.module.scss'
+import { memo } from 'react';
 
 interface ArticlesPageProps {
     className?:string
 }
+
 
 const ArticlesPage: React.FC<ArticlesPageProps> = (props) => {
     const {className} = props
@@ -16,9 +18,10 @@ const ArticlesPage: React.FC<ArticlesPageProps> = (props) => {
         <div className={classNames(cls.ArticlesPage, {}, [className])}>
             
             {t('Страница статьи')} 
+         
         </div>
     );
 };
 
-export default ArticlesPage;
+export default  memo(ArticlesPage);     
 

@@ -1,48 +1,50 @@
-import { configureStore, ReducersMapObject } from "@reduxjs/toolkit";
-import { counterReducer } from "entities/Counter";
-import { StateShema } from "./StateShema";
-import { userReducer } from "entities/User";
-import { createReducerManager } from "./reducerManager";
-import { ProfileReducer } from "entities/Profile/model/slice/ProfileSlice";
-import { $api } from "shared/api/Api";
-import { To } from "react-router-dom";
-import { NavigateOptions } from "react-router-dom";
-import { ThunkExtraArg } from "./StateShema";
+import { configureStore, ReducersMapObject } from '@reduxjs/toolkit';
+import { counterReducer } from 'entities/Counter';
+import { userReducer } from 'entities/User';
+import { $api } from 'shared/api/Api';
+import { To } from 'history';
+import { NavigateOptions } from 'react-router';
+import { CombinedState, Reducer } from 'redux';
+import { StateShema, ThunkExtraArg } from './StateShema';
+import { createReducerManager } from './reducerManager';
+import { articleDetailsReducer } from 'entities/Article/model/slice/articleDetailsSlice';
 
 export function createReduxStore(
-  initialState?: StateShema,
-  asyncReducers?: ReducersMapObject<StateShema>,
-  navigate?: (to: To, options?: NavigateOptions) => void,
+    initialState?: StateShema,
+    asyncReducers?: ReducersMapObject<StateShema>,
+    navigate?: (to: To, options?: NavigateOptions) => void,
 ) {
-  const rootReducers: ReducersMapObject<StateShema> = {
-    counter: counterReducer,
-    user: userReducer,
-    profile: ProfileReducer,
-  };
+    const rootReducers: ReducersMapObject<StateShema> = {
+        ...asyncReducers,
+        counter: counterReducer,
+        user: userReducer,
+        articleDetails: articleDetailsReducer 
+    };
 
-  const reducerManager = createReducerManager(rootReducers);
+    const reducerManager = createReducerManager(rootReducers);
 
-   const extraArg: ThunkExtraArg  = {
-    api:$api,
-    navigate
-   }
+    const extraArg: ThunkExtraArg = {
+        api: $api,
+        navigate,
+    };
 
-  const store = configureStore({
-    //@ts-ignore
-    reducer: reducerManager.reduce as ReducersMapObject<StateShema>,
-    devTools: __IS_DEV,
-    preloadedState: initialState,
-    middleware: (getDefaultMiddlware) => 
-      getDefaultMiddlware({
-        thunk: {
-          extraArgument: extraArg
-        },
-      }),
-  });
+    const store = configureStore({
+        reducer: reducerManager.reduce as Reducer<CombinedState<StateShema>>,
+        devTools: __IS_DEV,
+        preloadedState: initialState,
+        middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+            thunk: {
+                extraArgument: extraArg,
+            },
+        }),
+    });
 
-  // @ts-ignore
-  store.reducerManager = reducerManager;
+    // @ts-ignore
+    store.reducerManager = reducerManager;
 
-  return store;
+    return store;
 }
-export type AppDispatch = ReturnType<typeof createReduxStore>["dispatch"];
+
+export type AppDispatch = ReturnType<typeof createReduxStore>['dispatch'];
+
+

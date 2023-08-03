@@ -1,24 +1,34 @@
-import { Counter } from 'entities/Counter';
-import React from 'react';
-import {useTranslation} from "react-i18next";
 import { classNames } from 'shared/lib/classNames/classNames';
-import cls from './ArticlesPageDetalis.module.scss'
+import { useTranslation } from 'react-i18next';
+import { memo } from 'react';
+import {ArticleDetails} from 'entities/Article/ui/ArticleDetails/ArticleDetails';
+import { useParams } from 'react-router-dom';
+import cls from './ArticlesPageDetalis.module.scss' 
 
-interface ArticlesDetalisPageProps {
-    className?:string
+
+interface ArticleDetailsPageProps {
+    className?: string;
 }
 
-const ArticlesPageDetalis: React.FC<ArticlesDetalisPageProps> = (props) => {
-    const {className} = props
-    const {t} = useTranslation();
+const ArticleDetailsPage: React.FC<ArticleDetailsPageProps> = (props) => {
+    const { className } = props;
+    const { t } = useTranslation('article-details');
+    const { id } = useParams<{id: string}>();      
+
+    if (!id) {
+        return (
+            <div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
+                {t('Статья не найдена')}
+            </div>
+        );
+    }
 
     return (
-        <div className={classNames(cls.ArticlesPageDetalis, {}, [className])}>
-            
-            {t('Страница id  статьи')} 
+        <div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
+            <ArticleDetails id={id}/>
         </div>
     );
 };
 
-export default ArticlesPageDetalis;
+export default memo(ArticleDetailsPage);
 

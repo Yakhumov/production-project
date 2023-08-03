@@ -1,8 +1,9 @@
 import React, { memo, Suspense, useCallback } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { PageLoader } from 'shared/ui/PageLoader/PageLoader';
+import { AppRouterProps } from 'shared/config/RouterConfig/routerConfig';
 import { RequireAuth } from './RequireAuth';
-import { RouterConfig, AppRouterProps } from 'shared/config/RouterConfig/routerConfig';
+import { RouterConfig } from 'shared/config/RouterConfig/routerConfig';
 
 const AppRouter = () => {
     const renderWithWrapper = useCallback((route: AppRouterProps) => {
@@ -30,3 +31,4 @@ const AppRouter = () => {
 };
 
 export default memo(AppRouter);
+

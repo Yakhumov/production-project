@@ -6,4 +6,5 @@ export interface User {
 
 export interface userShema{
     authData?: User
+    _inited: boolean
 }

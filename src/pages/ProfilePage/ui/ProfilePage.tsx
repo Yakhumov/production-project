@@ -27,7 +27,7 @@ const ProfilePage: React.FC <ProfilePageProps> = (props) => {
     const { className} = props
     const {t} = useTranslation('profile');
     const dispatch = useAppDispatch() 
-    const formData = useSelector(getProfileForm)
+    const formData = useSelector(getProfileForm)    
     const isLoading = useSelector(getIsloading)
     const error = useSelector(getIsError) 
     const readonly = useSelector(getReadOnly) 
@@ -42,7 +42,6 @@ const ProfilePage: React.FC <ProfilePageProps> = (props) => {
     };
 
     useEffect(()=>{
-
       dispatch(fetchProfileData()) 
     },[])  
 

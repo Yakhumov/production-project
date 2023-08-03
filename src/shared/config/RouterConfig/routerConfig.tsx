@@ -1,13 +1,13 @@
 import { AboutPage } from "pages/AboutPage";
 import { ArticlesPage } from "pages/ArticlesPage";
-import { ArticlesPageDetalis } from "pages/ArticlesPageDetalis";
+import { ArticlesPageDetails } from "pages/ArticlesPageDetalis";
 import { MainPage } from "pages/MainPage";
 import { NotfoundPage } from "pages/NotfoundPage/ui/NotfoundPage";
 import { ProfilePage } from "pages/ProfilePage";
 import { RouteProps } from "react-router-dom";
 
   export  type AppRouterProps = RouteProps & {
-  authOnly?: boolean
+  authOnly?: boolean 
  }
 
 export enum AppRouters {
@@ -24,42 +24,41 @@ export const RouterPath: Record<AppRouters, string> = {
   [AppRouters.ABOUT]: '/about',
   [AppRouters.PROFILE]: '/profile',
   [AppRouters.ARTICLES]: '/articles',
-  [AppRouters.ARTICLES_DETALIS]: './articles', // + id
-  [AppRouters.NOTFOUND]: '*'
+  [AppRouters.ARTICLES_DETALIS]: '/articles/', // + id 
+  [AppRouters.NOTFOUND]: '*'      
 }
 
 export const RouterConfig: Record<AppRouters, AppRouterProps> = {
   [AppRouters.MAIN]: {
-    path: RouterPath[AppRouters.MAIN],
+    path: RouterPath.main,
     element: <MainPage />
   },
 
   [AppRouters.PROFILE]: {
-    path: RouterPath[AppRouters.PROFILE],
+    path: RouterPath.profile,
     element: <ProfilePage />,
     authOnly: true
   },
 
   [AppRouters.ABOUT]: {
-    path: RouterPath[AppRouters.ABOUT], 
+    path: RouterPath.about, 
     element: <AboutPage />
   },
 
   [AppRouters.ARTICLES]: {
-    path: RouterPath[AppRouters.ARTICLES], 
+    path: RouterPath.articles, 
     element: <ArticlesPage />,
     authOnly: true
   },
 
   [AppRouters.ARTICLES_DETALIS]: {
-    path: `${RouterPath.articles_detalis}id`,   
-    element: <ArticlesPageDetalis />,
-    authOnly: true
-    
-  },
+    path:  `${RouterPath.articles_detalis}:id`,
+    element: <ArticlesPageDetails />,
+    authOnly: true,
+},
 
   [AppRouters.NOTFOUND]: {
-    path: RouterPath[AppRouters.NOTFOUND], 
+    path: RouterPath.notFound,  
     element: <NotfoundPage/>
   }
 

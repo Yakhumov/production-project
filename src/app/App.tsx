@@ -7,8 +7,10 @@ import { Suspense } from "react";
 import { PageLoader } from "shared/ui/PageLoader/PageLoader";
 import { StoreProvider } from "./providers/ThemeProviders/StoreProvider";
 
+
 const App = () => {
   const { theme } = useTheme();
+ 
 
   return (
     <StoreProvider> 
@@ -17,7 +19,7 @@ const App = () => {
         <Navbar />
         <div className="content-page">
           <Sidebar />
-          <AppRouter />
+           <AppRouter />
         </div>
       </Suspense>
     </div>

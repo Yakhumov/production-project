@@ -1,18 +1,12 @@
-import { classNames } from 'shared/lib/classNames/classNames';
-import { useTranslation } from 'react-i18next';
 import { FC, useEffect } from 'react';
-import { loginReducer } from 'features/authUser';
 import { useDispatch, useStore } from 'react-redux';
-import { ReduxStoreWithManager} from 'app/providers/ThemeProviders/StoreProvider';
+import { ReduxStoreWithManager, } from 'app/providers/ThemeProviders/StoreProvider';
 import { StateSchemaKey } from 'app/providers/ThemeProviders/StoreProvider/config/StateShema';
 import { Reducer } from '@reduxjs/toolkit';
-import cls from './DynamicModuleLoader.module.scss';
 
 export type ReducersList = {
-    [name in StateSchemaKey]?: Reducer; 
+    [name in StateSchemaKey]?: Reducer;
 }
-
-type ReducersListEntry = [StateSchemaKey, Reducer]
 
 interface DynamicModuleLoaderProps {
     reducers: ReducersList;
@@ -37,7 +31,7 @@ export const DynamicModuleLoader: FC<DynamicModuleLoaderProps> = (props) => {
 
         return () => {
             if (removeAfterUnmount) {
-                Object.entries(reducers).forEach(([name, reducer] ) => {
+                Object.entries(reducers).forEach(([name, reducer]) => {
                     store.reducerManager.remove(name as StateSchemaKey);
                     dispatch({ type: `@DESTROY ${name} reducer` });
                 });
