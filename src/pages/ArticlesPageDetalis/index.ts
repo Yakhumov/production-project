@@ -1,3 +1,3 @@
-import { ArticlesPageDetalisAsync } from "./ui/ArticlesPageDetalis.async";
+import {ArticlesDetailsPageAsync} from "./ui/ArticlesDetailsPage.async";
 
-export {ArticlesPageDetalisAsync as ArticlesPageDetails}
+export {ArticlesDetailsPageAsync as ArticlesPageDetails}     

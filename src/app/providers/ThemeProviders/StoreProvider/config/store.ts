@@ -2,12 +2,13 @@ import { configureStore, ReducersMapObject } from '@reduxjs/toolkit';
 import { counterReducer } from 'entities/Counter';
 import { userReducer } from 'entities/User';
 import { $api } from 'shared/api/Api';
+import { ThunkExtraArg } from './StateShema';
 import { To } from 'history';
 import { NavigateOptions } from 'react-router';
 import { CombinedState, Reducer } from 'redux';
-import { StateShema, ThunkExtraArg } from './StateShema';
+import { StateShema } from './StateShema';
 import { createReducerManager } from './reducerManager';
-import { articleDetailsReducer } from 'entities/Article/model/slice/articleDetailsSlice';
+import { articleDetailsReducer } from 'entities/Article';
 
 export function createReduxStore(
     initialState?: StateShema,
@@ -15,10 +16,10 @@ export function createReduxStore(
     navigate?: (to: To, options?: NavigateOptions) => void,
 ) {
     const rootReducers: ReducersMapObject<StateShema> = {
-        ...asyncReducers,
+        ...asyncReducers, 
         counter: counterReducer,
         user: userReducer,
-        articleDetails: articleDetailsReducer 
+        articleDetails: articleDetailsReducer
     };
 
     const reducerManager = createReducerManager(rootReducers);
@@ -46,5 +47,4 @@ export function createReduxStore(
 }
 
 export type AppDispatch = ReturnType<typeof createReduxStore>['dispatch'];
-
 

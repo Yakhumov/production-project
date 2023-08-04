@@ -40,3 +40,4 @@ export function createReducerManager(initialReducers: ReducersMapObject<StateShe
         },
     };
 }
+

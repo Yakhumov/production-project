@@ -1,9 +1,7 @@
-import { Article } from "./article";
-
-
-export interface ArticlesDetailsShema {
-    isLoading: boolean;
-    error?: string;
+import { Article } from "./article"; 
+export interface ArticlesDetailsSchema {
     data?: Article
+    error?: string;
+    isLoading: boolean;
       
 }           

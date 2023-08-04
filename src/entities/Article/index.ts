@@ -1,10 +1,12 @@
 
-import { ArticlesDetailsShema } from "./model/types/articleDetailsShema";
+import { ArticlesDetailsSchema } from "./model/types/articleDetailsShema";
 import { Article } from "./model/types/article";
 import {ArticleDetails} from "./ui/ArticleDetails/ArticleDetails";
+import { articleDetailsReducer } from "./model/slice/articleDetailsSlice";
 
 export {
-  ArticlesDetailsShema,
+  ArticlesDetailsSchema,
+  articleDetailsReducer,
   Article,
   ArticleDetails,
 };

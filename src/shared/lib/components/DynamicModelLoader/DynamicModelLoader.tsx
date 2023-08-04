@@ -1,6 +1,6 @@
 import { FC, useEffect } from 'react';
 import { useDispatch, useStore } from 'react-redux';
-import { ReduxStoreWithManager, } from 'app/providers/ThemeProviders/StoreProvider';
+import { ReduxStoreWithManager } from 'app/providers/ThemeProviders/StoreProvider';
 import { StateSchemaKey } from 'app/providers/ThemeProviders/StoreProvider/config/StateShema';
 import { Reducer } from '@reduxjs/toolkit';
 
@@ -47,3 +47,4 @@ export const DynamicModuleLoader: FC<DynamicModuleLoaderProps> = (props) => {
         </>
     );
 };
+

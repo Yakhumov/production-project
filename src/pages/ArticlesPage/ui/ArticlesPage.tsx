@@ -1,27 +1,23 @@
-import { Counter } from 'entities/Counter';
-import React from 'react';
-import {useTranslation} from "react-i18next";
-import { classNames } from 'shared/lib/classNames/classNames';
-import cls from './ArticlesPage.module.scss'
-import { memo } from 'react';
+import { Counter } from "entities/Counter";
+import React from "react";
+import { useTranslation } from "react-i18next";
+import { classNames } from "shared/lib/classNames/classNames";
+import cls from "./ArticlesPage.module.scss";
+import { memo } from "react";
 
 interface ArticlesPageProps {
-    className?:string
+  className?: string;
 }
 
-
 const ArticlesPage: React.FC<ArticlesPageProps> = (props) => {
-    const {className} = props
-    const {t} = useTranslation();
+  const { className } = props;
+  const { t } = useTranslation();
 
-    return (
-        <div className={classNames(cls.ArticlesPage, {}, [className])}>
-            
-            {t('Страница статьи')} 
-         
-        </div>
-    );
+  return (
+    <div className={classNames(cls.ArticlesPage, {}, [className])}>
+      {t("Страница статьи")}
+    </div>
+  );
 };
 
-export default  memo(ArticlesPage);     
-
+export default memo(ArticlesPage);

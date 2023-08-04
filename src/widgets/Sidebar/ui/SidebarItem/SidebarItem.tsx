@@ -9,6 +9,8 @@ import AboutIcon from 'shared/assets/icons/about-20-20.svg';
 import MainIcon from 'shared/assets/icons/main-20-20.svg';
 import { SidebarItemType } from '../../model/items';
 import { classNames } from 'shared/lib/classNames/classNames';
+import { getAuthData } from 'features/authUser';
+import { useSelector } from 'react-redux';
 
 interface SidebarItemProps {  
   item: SidebarItemType
@@ -17,6 +19,11 @@ interface SidebarItemProps {
 
 const SidebarItem: React.FC<SidebarItemProps> = ({item, collapsed}) => {
     const {t} = useTranslation();
+    const isAuth = useSelector(getAuthData);
+
+    if (item.authOnly && !isAuth) {
+        return null;
+    }
 
     return (
         <AppLink

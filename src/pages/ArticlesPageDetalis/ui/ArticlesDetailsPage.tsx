@@ -1,21 +1,20 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { memo } from 'react';
-import {ArticleDetails} from 'entities/Article/ui/ArticleDetails/ArticleDetails';
+import { ArticleDetails } from 'entities/Article';
 import { useParams } from 'react-router-dom';
-import cls from './ArticlesPageDetalis.module.scss' 
-
+import cls from './ArticlesDetailsPage.module.scss' 
 
 interface ArticleDetailsPageProps {
     className?: string;
 }
 
-const ArticleDetailsPage: React.FC<ArticleDetailsPageProps> = (props) => {
+const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
     const { className } = props;
-    const { t } = useTranslation('article-details');
-    const { id } = useParams<{id: string}>();      
+    const { t } = useTranslation('article-details'); 
+    const {articleId } = useParams<{ articleId: string }>();
 
-    if (!id) {
+    if (!articleId) {
         return (
             <div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
                 {t('Статья не найдена')}
@@ -25,10 +24,9 @@ const ArticleDetailsPage: React.FC<ArticleDetailsPageProps> = (props) => {
 
     return (
         <div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
-            <ArticleDetails id={id}/>
+            <ArticleDetails articleId={articleId} />
         </div>
     );
 };
 
 export default memo(ArticleDetailsPage);
-
