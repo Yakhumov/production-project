@@ -26,7 +26,7 @@ import { ArticleBlock, ArticleBlockType } from "../../model/types/article";
 
 interface ArticleDetailsProps {
   className?: string;
-  articleId: string;
+  id: string;
 }
 
 const reducers: ReducersList = {
@@ -34,7 +34,7 @@ const reducers: ReducersList = {
 };
 
 export const ArticleDetails = memo((props: ArticleDetailsProps) => {
-  const { className, articleId } = props;
+  const { className, id } = props;
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const isLoading = useSelector(getArticleDetailsIsLoading);
@@ -74,9 +74,9 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
 
   useEffect(() => {
     if (__PROJECT__ !== "storybook") {
-      dispatch(fetchArticleById(articleId));
+      dispatch(fetchArticleById(id)); 
     }
-  }, [dispatch, articleId]);
+  }, [dispatch,id]);
 
   let content;
 
@@ -127,7 +127,7 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
   }
 
   return (
-    <DynamicModuleLoader reducers={reducers} removeAfterUnmount={true}>
+    <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
       <div className={classNames(cls.ArticleDetails, {}, [className])}>
         {content}
       </div>

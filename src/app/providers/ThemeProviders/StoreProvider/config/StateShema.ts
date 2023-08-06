@@ -9,13 +9,15 @@ import { NavigateOptions } from "react-router-dom";
 import { AxiosInstance } from "axios";
 import { To } from "react-router-dom";
 import { ArticlesDetailsSchema } from "entities/Article";      
+import { ArticleDetailsCommentsSchema } from "pages/ArticlesPageDetalis";
 
 export interface StateShema {          
     counter: CounterShema;
     user: userShema;
     loginForm?: LoginShema;
     profile?: ProfileShema;
-    articleDetails: ArticlesDetailsSchema
+    articleDetails?: ArticlesDetailsSchema
+    articleDetailsComments?: ArticleDetailsCommentsSchema
 }
 
 export type StateSchemaKey = keyof StateShema; 
