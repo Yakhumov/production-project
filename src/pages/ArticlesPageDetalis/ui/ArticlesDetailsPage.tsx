@@ -1,6 +1,6 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import { memo } from 'react';
+import { memo, useCallback } from 'react';
 import { ArticleDetails } from 'entities/Article';
 import { useParams } from 'react-router-dom';
 import cls from './ArticlesDetailsPage.module.scss' 
@@ -14,6 +14,8 @@ import { fetchCommentsByArticleId } from '../model/services/fetchCommentArticleB
 import { useSelector } from 'react-redux';
 import { CommentsIsLoading } from '../model/selectors/Comments';
 import { getArticleComments } from '../model/slice/ArticleDetailsComments.slice';
+import { addCommentForArticle } from '../model/services/addCommentForm/AddCommentForm';
+import { CommentForm } from 'features/addCommentForm';
 
 interface ArticleDetailsPageProps {
     className?: string;
@@ -37,6 +39,10 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
         dispatch(fetchCommentsByArticleId(id))   
     })
 
+    const onSendComment = useCallback((text:string)=>{
+        dispatch(addCommentForArticle(text))    
+    },[dispatch]) 
+
 
     if (!id) {
         return (
@@ -53,6 +59,7 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
             <div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
                 <ArticleDetails id={id} />   
                 <Text className={cls.commentTitle} title={t('Комментарии')} />
+                <CommentForm onSendComment={onSendComment}/>
                 <CommentList
                     isLoading={commentIsLoading}
                     comments={comments}      

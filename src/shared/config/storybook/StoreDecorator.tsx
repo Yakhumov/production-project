@@ -5,12 +5,14 @@ import { loginReducer } from 'features/authUser';
 import { ReducersList } from 'shared/lib/components/DynamicModelLoader/DynamicModelLoader';
 import { ProfileReducer } from 'entities/Profile';
 import { articleDetailsReducer } from 'entities/Article/model/slice/articleDetailsSlice';
+import { articleDetailsCommentsReducer } from 'pages/ArticlesPageDetalis/model/slice/ArticleDetailsComments.slice';
 
 
 const defaultAsyncReducers: ReducersList = {
     loginForm: loginReducer, 
     profile: ProfileReducer,
-    articleDetails: articleDetailsReducer 
+    articleDetails: articleDetailsReducer, 
+    addCommentForm: articleDetailsCommentsReducer  
 };
 
 

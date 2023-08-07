@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect } from 'react';
 import {useTranslation} from "react-i18next";
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModelLoader/DynamicModelLoader';
-import { Profile, ProfileActions, ProfileCard, ProfileReducer, fetchProfileData, getIsError, getIsloading, getProfileData, getProfileForm, getReadOnly } from 'entities/Profile';
+import { Profile, ProfileActions, ProfileCard, ProfileReducer, fetchProfileData, getIsError, getIsloading, getProfileForm, getReadOnly } from 'entities/Profile';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
 import { useSelector } from 'react-redux';
@@ -12,6 +12,8 @@ import { validateProfileErrors } from 'entities/Profile/model/selectors/getValid
 import { TextTheme } from 'shared/ui/Text/ui/Text';
 import { Text } from 'shared/ui/Text/ui/Text';
 import { ValidateProfileErrors } from 'entities/Profile';
+import { useInitialEffect } from 'shared/lib/hooks/useAppDispatch/useInitialEffect/useInitialEffect';
+
 
 
 const reducers : ReducersList = { 
@@ -32,6 +34,7 @@ const ProfilePage: React.FC <ProfilePageProps> = (props) => {
     const error = useSelector(getIsError) 
     const readonly = useSelector(getReadOnly) 
     const validateErrors = useSelector(validateProfileErrors)
+   
 
     const validateErrorTranslates = {
         [ValidateProfileErrors.SERVER_ERROR]: t('Серверная ошибка при сохранении'),
@@ -41,9 +44,9 @@ const ProfilePage: React.FC <ProfilePageProps> = (props) => {
         [ValidateProfileErrors.INCORRECT_AGE]: t('Некорректный возраст'),
     };
 
-    useEffect(()=>{
+    useInitialEffect(()=>{
       dispatch(fetchProfileData()) 
-    },[])  
+    })  
 
     const onChangeFirstName = useCallback((value?:string)=>{
         dispatch(ProfileActions.editProfile({first: value ||  '' }))

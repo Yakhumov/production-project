@@ -11,6 +11,7 @@ import { useCallback } from "react";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { updateProfileData } from "entities/Profile/model/services/updateProfileData/updateProfileData";
 
+
 interface ProfilePageHeaderProps {
   className?: string;
 
@@ -20,6 +21,7 @@ export const ProfilePageHeader: React.FC<ProfilePageHeaderProps> = (props) => {
   const { className } = props;
   const { t } = useTranslation();
   const dispatch = useAppDispatch()
+ 
 
     const readonly = useSelector(getReadOnly) 
 

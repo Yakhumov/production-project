@@ -8,6 +8,8 @@ import { Comment } from "entities/Comment/model/types/comments";
 import { Skeleton } from "shared/ui/Skeleton";
 import { Avatar } from "shared/ui/Avatar/ui";
 import { Text } from "shared/ui/Text";
+import { AppLink } from "shared/ui/Applink/AppLink";
+import { RouterPath } from "shared/config/RouterConfig/routerConfig";
 
 interface CommentCardProps {
   className?: string;
@@ -24,11 +26,11 @@ const CommentCard: React.FC<CommentCardProps> = (props) => {
   if (isLoading) {
     return (
         <div className={classNames(cls.CommentCard, {}, [className])}>
-            <div className={cls.header}>
+            <AppLink to={`{RouterPath.profile}${comment.user.id}`} className={cls.header}>
                 <Skeleton width={30} height={30} border="50%" />
                 <Skeleton height={16} width={100} className={cls.username} />
-            </div>
-            <Skeleton className={cls.text} width="100%" height={50} />
+            </AppLink>
+            <Skeleton className={cls.text} width="100%" height={50} /> 
         </div>
     );
 }
