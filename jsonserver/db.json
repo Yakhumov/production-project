@@ -102,6 +102,12 @@
       "text": "some comment 3",
       "articleId": "1",
       "userId": "1"
+    },
+    {
+      "articleId": "1",
+      "userId": "1",
+      "text": "yuguyguykg",
+      "id": "CiI1kQ0"
     }
   ],
   "users": [
@@ -120,7 +126,7 @@
   ],
   "profile": {
     "first": "Jahar",
-    "lastname": "Yakumov", 
+    "lastname": "Yakumov",
     "age": 27,
     "currency": "RUB",
     "country": "Belarus",

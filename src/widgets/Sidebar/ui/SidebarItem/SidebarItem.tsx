@@ -7,7 +7,7 @@ import { RouterPath } from 'shared/config/RouterConfig/routerConfig';
 import cls from './SidebarItem.module.scss'
 import AboutIcon from 'shared/assets/icons/about-20-20.svg';
 import MainIcon from 'shared/assets/icons/main-20-20.svg';
-import { SidebarItemType } from '../../model/items';
+import { SidebarItemType } from 'widgets/Sidebar/model/items';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { getAuthData } from 'features/authUser';
 import { useSelector } from 'react-redux';

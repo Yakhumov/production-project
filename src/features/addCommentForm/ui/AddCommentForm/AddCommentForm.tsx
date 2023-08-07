@@ -48,18 +48,17 @@ const reducers: ReducersList = {
 
   return (
     <DynamicModuleLoader reducers={reducers}>
-      <div className={classNames(cls.CommentList, {}, [className])}>
+      <div className={classNames(cls.AddCommentForm , {}, [className])}> 
         <Input
           className={cls.input}
           placeholder={t("Введите текст комментария")}
           value={text}
           onChange={onCommentChange} 
         />
-        <Button theme={ThemeButton.CLEAR} onClick={onSendHandler}>
+        <Button theme={ThemeButton.OUTLINE} onClick={onSendHandler}>
           {t("Отправить")}
         </Button>
       </div>
-      ;
     </DynamicModuleLoader>
   );
 };
