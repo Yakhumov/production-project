@@ -13,6 +13,7 @@ import { TextTheme } from 'shared/ui/Text/ui/Text';
 import { Text } from 'shared/ui/Text/ui/Text';
 import { ValidateProfileErrors } from 'entities/Profile';
 import { useInitialEffect } from 'shared/lib/hooks/useAppDispatch/useInitialEffect/useInitialEffect';
+import { Page } from 'shared/ui/Page/Page';
 
 
 
@@ -82,7 +83,7 @@ const ProfilePage: React.FC <ProfilePageProps> = (props) => {
 
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount>   
-        <div className={classNames('', {}, [className])}>
+        <Page className={classNames('', {}, [className])}>
             <ProfilePageHeader/>
             {validateErrors?.length && validateErrors.map((error)=>{
                 return (
@@ -105,7 +106,7 @@ const ProfilePage: React.FC <ProfilePageProps> = (props) => {
             
 
             />
-        </div>
+        </Page>
 
         </DynamicModuleLoader>
     );

@@ -45,7 +45,7 @@ export interface Article {
     id: string;
     title: string;
     subtitle: string;
-    user: User
+    user: User;
     img: string;
     views: number;
     createdAt: string;
