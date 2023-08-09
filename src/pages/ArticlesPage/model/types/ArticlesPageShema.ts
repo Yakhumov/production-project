@@ -10,4 +10,5 @@ export interface ArticlePageShema extends EntityState<Article> {
   hasMore:boolean
 
   view: ArticleView; 
+  _inited:boolean
 }

@@ -10,10 +10,7 @@ import { useInitialEffect } from "shared/lib/hooks/useAppDispatch/useInitialEffe
 import { useDispatch, useSelector } from "react-redux";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { fetchArticles } from "../model/services/fetchArticles";
-import {
-  articlesPageActions,
-  getArticle,
-} from "../model/slices/ArticlePageSlice";
+import { getArticles } from "../model/slices/ArticlePageSlice";
 import { articlesPageReducer } from "../model/slices/ArticlePageSlice";
 import cls from "./ArticlesPage.module.scss";
 import {
@@ -26,6 +23,9 @@ import {
 import { ArticleViewSelector } from "entities/Article";
 import { ArticleView } from "entities/Article/model/types/article";
 import { Page } from "shared/ui/Page/Page";
+import { fetchNextArticlesPage } from "../model/services/fetchNextArticles";
+import { articlesPageActions } from "../model/slices/ArticlePageSlice";
+import { initArticlesPage } from "../model/services/initedArticles";
 
 interface ArticlesPageProps {
   className?: string;
@@ -39,39 +39,22 @@ const ArticlesPage = (props: ArticlesPageProps) => {
   const { className } = props;
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
-  const articles = useSelector(getArticle.selectAll);
+  const articles = useSelector(getArticles.selectAll);
   const isLoading = useSelector(getArticlePageIsLoading);
   const view = useSelector(getArticlePageView);
   const error = useSelector(getArticlePageError);
-  const page = useSelector(getArticlePage);
-  const hasmore = useSelector(getArticlePageHasmore);
 
-  const onLoadNextPart = useCallback(() => {
-    if (hasmore && isLoading) {
-      dispatch(articlesPageActions.setPage(page + 1));
-      dispatch(
-        fetchArticles({
-          page: page + 1,
-        })
-      );
-    }
-  }, [page, hasmore,isLoading]);
+  const onChangeView = useCallback((view: ArticleView) => {
+    dispatch(articlesPageActions.setView(view));
+}, [dispatch]);
 
-  useInitialEffect(() => {
-    dispatch(
-      fetchArticles({
-        page: 1,
-      })
-    );
-    dispatch(articlesPageActions.initState());
-  });
+const onLoadNextPart = useCallback(() => {
+    dispatch(fetchNextArticlesPage());
+}, [dispatch]);
 
-  const onChangeView = useCallback(
-    (view: ArticleView) => {
-      dispatch(articlesPageActions.setView(view));
-    },
-    [dispatch]
-  );
+useInitialEffect(() => {
+   dispatch(initArticlesPage()) 
+});
 
   return (
     <DynamicModuleLoader reducers={reducers}>

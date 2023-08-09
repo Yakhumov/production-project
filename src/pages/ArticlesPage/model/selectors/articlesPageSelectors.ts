@@ -7,6 +7,8 @@ export const getArticlePageView = (state: StateShema) => state.articlesPage?.vie
 export const getArticlePage = (state: StateShema) => state.articlesPage?.page || 1
 export const getArticlePageLimit = (state: StateShema) => state.articlesPage?.limit || 9
 export const getArticlePageHasmore = (state: StateShema) => state.articlesPage?.hasMore 
+export const getArticlePageInited = (state: StateShema) => state.articlesPage?._inited
+
 
 
 
