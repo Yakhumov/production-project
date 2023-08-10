@@ -12,10 +12,14 @@ import { ArticlesDetailsSchema } from "entities/Article";
 import { ArticleDetailsCommentsSchema } from "pages/ArticlesPageDetalis";
 import { AddCommentFormShema } from "features/addCommentForm/model/types/AddCommentForm";
 import { ArticlePageShema } from "pages/ArticlesPage";
+import { UiShema } from "features/ui/model/types/ui";
 
 export interface StateShema {          
     counter: CounterShema;
     user: userShema;
+    ui: UiShema
+
+    //async
     loginForm?: LoginShema;
     profile?: ProfileShema;
     articleDetails?: ArticlesDetailsSchema

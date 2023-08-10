@@ -8,6 +8,7 @@ import { NavigateOptions } from 'react-router';
 import { CombinedState, Reducer } from 'redux';
 import { StateShema } from './StateShema';
 import { createReducerManager } from './reducerManager';
+import { UIReducer } from 'features/ui/model/slices/uiScrollSlice';
 
 export function createReduxStore(
     initialState?: StateShema,
@@ -17,6 +18,7 @@ export function createReduxStore(
         ...asyncReducers, 
         counter: counterReducer,
         user: userReducer,
+        ui: UIReducer
     
  
     };
