@@ -9,9 +9,11 @@ import { getArticleDetailsError } from "./model/selectors/ArticleDetails";
 import { ArticleListItem } from "./ui/ArticleListItem/ArticleListItem";
 import { ArticleListItemSkeleton } from "./ui/ArticleListItem/ArticleListItemSkeleton";
 import { ArticleViewSelector } from "./ui/ArticleViewSelector/ArticleViewSelector";
+import { ArticleSort } from "./ui/ArticleSortSelector/ArticleSortSelector";
 
 export {
   ArticlesDetailsSchema,
+  ArticleSort,
   getArticleDetailsData,
   getArticleDetailsIsLoading,
   articleDetailsReducer,

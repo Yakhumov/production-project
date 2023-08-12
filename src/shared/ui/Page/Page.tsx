@@ -22,7 +22,7 @@ export const Page = memo((props: PageProps) => {
     const { className, children, onScrollEnd } = props;
     const wrapperRef = useRef() as MutableRefObject<HTMLDivElement>;
     const triggerRef = useRef() as MutableRefObject<HTMLDivElement>;
-    const dispatch = useAppDispatch()
+    const dispatch = useAppDispatch() 
     const {pathname} = useLocation()
     const setScrollPosition = useSelector( (state: StateShema)=> getUIScrollByPath(state,pathname))
 

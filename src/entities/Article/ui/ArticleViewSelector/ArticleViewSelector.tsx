@@ -11,7 +11,7 @@ interface ArticleViewSelectorProps {
     className?: string;
     view: ArticleView,
     onViewClick?: (view: ArticleView) => void;
-}
+}       
 
 const viewTypes = [
     {
