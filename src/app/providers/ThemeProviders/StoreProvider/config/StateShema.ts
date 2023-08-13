@@ -13,6 +13,8 @@ import { ArticleDetailsCommentsSchema } from "pages/ArticlesPageDetalis";
 import { AddCommentFormShema } from "features/addCommentForm/model/types/AddCommentForm";
 import { ArticlePageShema } from "pages/ArticlesPage";
 import { UiShema } from "features/ui/model/types/ui";
+import { ArticleDetailsRecommendationsSchema } from "pages/ArticlesPageDetalis";
+import { ArticleDetailsPageSchema } from "pages/ArticlesPageDetalis/model/types";
 
 export interface StateShema {          
     counter: CounterShema;
@@ -23,9 +25,9 @@ export interface StateShema {
     loginForm?: LoginShema;
     profile?: ProfileShema;
     articleDetails?: ArticlesDetailsSchema
-    articleDetailsComments?: ArticleDetailsCommentsSchema
     addCommentForm?: AddCommentFormShema
     articlesPage?: ArticlePageShema
+    articleDetailsPage?: ArticleDetailsPageSchema
 }
 
 export type StateSchemaKey = keyof StateShema; 

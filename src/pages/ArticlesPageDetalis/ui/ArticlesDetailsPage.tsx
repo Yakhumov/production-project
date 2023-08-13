@@ -20,6 +20,11 @@ import { Button } from 'shared/ui/Button';
 import { ThemeButton } from 'shared/ui/Button/Button';
 import { RouterPath } from 'shared/config/RouterConfig/routerConfig';
 import { Page } from 'shared/ui/Page/Page';
+import { articleDetailsPageReducer } from '../model/slice';
+import { getArticleRecommendations } from '../model/slice/articleDetailsPageRecommendationsSlice';
+import { getArticleRecommendationsIsLoading } from '../model/selectors/Recomendation';
+import { ArticleList } from 'entities/Article/ui/ArticleList/ArticleList';
+import { fetchArticleRecommendations } from '../model/services/fetchArticleRecommendations/fetchArticleRecommendations';
 
 interface ArticleDetailsPageProps {
     className?: string;
@@ -27,7 +32,7 @@ interface ArticleDetailsPageProps {
 
 
 const reducers : ReducersList = {
-    articleDetailsComments: articleDetailsCommentsReducer
+    articleDetailsPage: articleDetailsPageReducer
 }
 
 const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
@@ -36,12 +41,15 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
     const {id } = useParams<{ id: string }>();
     const dispatch = useAppDispatch()
     const commentIsLoading = useSelector(CommentsIsLoading)
+    const recomendation = useSelector(getArticleRecommendations.selectAll)
+    const recomendationIsloading = useSelector(getArticleRecommendationsIsLoading)
     const comments = useSelector(getArticleComments.selectAll);
     const navigate = useNavigate()
 
 
     useInitialEffect(()=>{
         dispatch(fetchCommentsByArticleId(id))   
+        dispatch(fetchArticleRecommendations())  
     })
 
     const onSendComment = useCallback((text:string)=>{
@@ -66,10 +74,12 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
     return (
        <DynamicModuleLoader reducers={reducers}removeAfterUnmount>
             <Page className={classNames(cls.ArticleDetailsPage, {}, [className])}>
-            <Button theme={ThemeButton.OUTLINE} onClick={onBackToList}>
+            <Button  theme={ThemeButton.OUTLINE} onClick={onBackToList}>
                     {t('Назад к списку')}
                 </Button>
                 <ArticleDetails id={id} />   
+                <Text className={cls.recomendation} title={t('Рекомендуем')}/>
+                <ArticleList target='_blank' articles={recomendation} isLoading={recomendationIsloading}/>
                 <Text className={cls.commentTitle} title={t('Комментарии')} />
                 <CommentForm onSendComment={onSendComment}/>
                 <CommentList

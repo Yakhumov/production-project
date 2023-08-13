@@ -595,6 +595,12 @@
       "userId": "1",
       "text": "python!!!",
       "id": "p5rMadd"
+    },
+    {
+      "articleId": "5",
+      "userId": "1",
+      "text": "lkmkm",
+      "id": "C-wvoiP"
     }
   ],
   "users": [
@@ -613,41 +619,15 @@
       "avatar": "https://xakep.ru/wp-content/uploads/2018/05/171485/KuroiSH-hacker.jpg"
     }
   ],
-  "profile": 
-    {
-      "id": "2",
-      "first": "ulbi tv",
-      "lastname": "asf",
-      "age": 465,
-      "currency": "RUB",
-      "country": "Russia",
-      "city": "Moscow",
-      "username": "ulbi tv",
-      "avatar": "https://avatars.mds.yandex.net/i?id=dcffe36decc0ae604344cc7c2f218c56a3c17c95-7548535-images-thumbs&n=13"
-    }
-  
+  "profile": {
+    "id": "2",
+    "first": "ulbi tv",
+    "lastname": "asf",
+    "age": 465,
+    "currency": "RUB",
+    "country": "Russia",
+    "city": "Moscow",
+    "username": "ulbi tv",
+    "avatar": "https://avatars.mds.yandex.net/i?id=dcffe36decc0ae604344cc7c2f218c56a3c17c95-7548535-images-thumbs&n=13"
+  }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
