@@ -6,12 +6,11 @@ const MainPage = () => {
     const {t} = useTranslation();
 
     return (
-        <div>
-            
+        <div style={{padding: '15px', marginLeft: '17px' }}>         
             {t('Главная страница')} 
         </div>
     );
 };
 
-export default MainPage;
+export default MainPage; 
 

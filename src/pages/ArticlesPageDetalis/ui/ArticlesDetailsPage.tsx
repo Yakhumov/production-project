@@ -5,7 +5,6 @@ import { ArticleDetails } from 'entities/Article';
 import { useNavigate, useParams } from 'react-router-dom';
 import cls from './ArticlesDetailsPage.module.scss' 
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModelLoader/DynamicModelLoader';
-import { articleDetailsCommentsReducer } from '../model/slice/ArticleDetailsComments.slice';
 import CommentList from 'entities/Comment/ui/CommentList/CommentList';
 import { Text } from 'shared/ui/Text';
 import { useInitialEffect } from 'shared/lib/hooks/useAppDispatch/useInitialEffect/useInitialEffect';
@@ -25,6 +24,7 @@ import { getArticleRecommendations } from '../model/slice/articleDetailsPageReco
 import { getArticleRecommendationsIsLoading } from '../model/selectors/Recomendation';
 import { ArticleList } from 'entities/Article/ui/ArticleList/ArticleList';
 import { fetchArticleRecommendations } from '../model/services/fetchArticleRecommendations/fetchArticleRecommendations';
+import { ArticleDetailsPageHeader } from '..';
 
 interface ArticleDetailsPageProps {
     className?: string;
@@ -44,7 +44,7 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
     const recomendation = useSelector(getArticleRecommendations.selectAll)
     const recomendationIsloading = useSelector(getArticleRecommendationsIsLoading)
     const comments = useSelector(getArticleComments.selectAll);
-    const navigate = useNavigate()
+   
 
 
     useInitialEffect(()=>{
@@ -65,18 +65,14 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
         );
     }
 
-    const onBackToList = useCallback(()=>{
-       navigate(RouterPath.articles)
-    },[navigate]) 
+ 
 
  
 
     return (
        <DynamicModuleLoader reducers={reducers}removeAfterUnmount>
             <Page className={classNames(cls.ArticleDetailsPage, {}, [className])}>
-            <Button  theme={ThemeButton.OUTLINE} onClick={onBackToList}>
-                    {t('Назад к списку')}
-                </Button>
+                <ArticleDetailsPageHeader/>
                 <ArticleDetails id={id} />   
                 <Text className={cls.recomendation} title={t('Рекомендуем')}/>
                 <ArticleList target='_blank' articles={recomendation} isLoading={recomendationIsloading}/>
