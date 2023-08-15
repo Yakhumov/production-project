@@ -6,6 +6,7 @@
   "    создания ": "    создания ",
   "   дате создания ": "   дате создания ",
   "  Главная": "  Главная",
+  " App": " App",
   " Дата  ": " Дата  ",
   " Н ": " Н ",
   " Названию ": " Названию ",
@@ -19,11 +20,15 @@
   "Ja": "Ja",
   "Jaha": "Jaha",
   "Jahar": "Jahar",
+  "Jahar App": "Jahar App",
   "Lorem ipsum dolor sit amet, consectetur adipisicing elit": {
     " Aliquid commodi consequatur eligendi impedit incidunt necessitatibus possimus quis saepe sunt totam": {
       "": ""
     }
   },
+  "M App": "M App",
+  "My App": "My App",
+  "My-App": "My-App",
   "throw error": "throw error",
   "Айти": "Айти",
   "ВЫ": "ВЫ",

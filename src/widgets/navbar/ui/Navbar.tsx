@@ -42,7 +42,7 @@ export const Navbar: React.FC <NavbarProps> =memo(({ className }) => {
     if (authData) {
         return (
             <header className={classNames(cls.Navbar, {}, [className])}>
-                <Text title={t('Jahar')}
+                <Text title={t('My-App')} 
                 theme={TextTheme.INVERTED}
                 className={cls.appName}
                 />
