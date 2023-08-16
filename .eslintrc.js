@@ -1,31 +1,40 @@
 module.exports = {
-  "env": {
-    "browser": true,
-    "es2021": true,
-    "jest": true
+  env: {
+    browser: true,
+    es2021: true,
+    jest: true,
   },
-  "extends": ["standard-with-typescript", "plugin:react/recommended", "plugin:storybook/recommended"],
-  "overrides": [{
-    "env": {
-      "node": true
+  extends: [
+    "standard-with-typescript",
+    "plugin:react/recommended",
+    "plugin:storybook/recommended",
+  ],
+  overrides: [
+    {
+      env: {
+        node: true,
+      },
+      files: [".eslintrc.js", ".eslintrc.cjs"],
+      parserOptions: {
+        sourceType: "script",
+      },
     },
-    "files": [".eslintrc.js", ".eslintrc.cjs"],
-    "parserOptions": {
-      "sourceType": "script"
-    }
-  }],
-  "parserOptions": {
-    "ecmaVersion": "latest",
-    "sourceType": "module"
+  ],
+  parserOptions: {
+    ecmaVersion: "latest",
+    sourceType: "module",
   },
-  "plugins": ["react", "i18next"],
-  "rules": {
+  plugins: ["react", "i18next", "jahar-plugin"],
+  rules: {
     "react/jsx-indent": [2, 4],
     "react/jsx-indent-props": [2, 4],
-    "indent": [2, 4],
-    "react/jsx-filename-extension": [2, {
-      "extensions": [".js", ".jsx", ".tsx"]
-    }],
+    indent: [2, 4],
+    "react/jsx-filename-extension": [
+      2,
+      {
+        extensions: [".js", ".jsx", ".tsx"],
+      },
+    ],
     "import/no-unresolved": "off",
     "import/prefer-default-export": "off",
     "no-unused-vars": "warn",
@@ -37,21 +46,28 @@ module.exports = {
     "import/extensions": "off",
     "import/no-extraneous-dependencies": "off",
     "no-underscore-dangle": "off",
-    "i18next/no-literal-string": ["error", {
-      "markupOnly": true
-    }],
-    "max-len": ["error", {
-      "ignoreComments": true
-    }]
+    "i18next/no-literal-string": [
+      "error",
+      {
+        markupOnly: true,
+      },
+    ],
+    "max-len": [
+      "error",
+      {
+        ignoreComments: true,
+      },
+    ],
+    "jahar-plugin/path-cheker": 'error',
   },
-  "globals": {
-    "__IS_DEV__": true,
+  globals: {
+    __IS_DEV__: true,
     __API__: true,
-    __PROJECT__: true
+    __PROJECT__: true,
   },
-  "settings": {
-    "react": {
-      "version": "detect"
-    }
-  }
+  settings: {
+    react: {
+      version: "detect",
+    },
+  },
 };
