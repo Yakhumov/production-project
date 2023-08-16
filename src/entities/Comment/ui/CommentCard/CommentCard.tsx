@@ -10,11 +10,12 @@ import { Avatar } from "shared/ui/Avatar/ui";
 import { Text } from "shared/ui/Text";
 import { AppLink } from "shared/ui/Applink/AppLink";
 import { RouterPath } from "shared/config/RouterConfig/routerConfig";
+import { HStack, VStack } from "shared/ui/Stack";
 
 interface CommentCardProps {
   className?: string;
   isLoading?: boolean
-  comment: Comment 
+  comment?: Comment 
 }
 
 const CommentCard: React.FC<CommentCardProps> = (props) => {
@@ -26,7 +27,7 @@ const CommentCard: React.FC<CommentCardProps> = (props) => {
   if (isLoading) {
     return (
         <div className={classNames(cls.CommentCard, {}, [className])}>
-            <AppLink to={`{RouterPath.profile}${comment.user.id}`} className={cls.header}>
+            <AppLink to={`{RouterPath.profile}${comment?.user.id}`} className={cls.header}>
                 <Skeleton width={30} height={30} border="50%" />
                 <Skeleton height={16} width={100} className={cls.username} />
             </AppLink>
@@ -35,14 +36,16 @@ const CommentCard: React.FC<CommentCardProps> = (props) => {
     );
 }
 
+if(!comment){
+  return null 
+}
+
   return (
-    <div className={classNames(cls.CommentCard, {}, [className])}>
-    <div className={cls.header}>
+    <VStack gap="8" max  className={classNames(cls.CommentCard, {}, [className])}>
         {comment.user.avatar ? <Avatar size={30} src={comment.user.avatar} /> : null}
         <Text className={cls.username} title={comment.user.username} />
-    </div>
     <Text className={cls.text} text={comment.text} /> 
-</div>
+</VStack>
   );
 };
 

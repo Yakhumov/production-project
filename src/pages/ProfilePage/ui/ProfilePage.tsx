@@ -14,6 +14,7 @@ import { Text } from 'shared/ui/Text/ui/Text';
 import { ValidateProfileErrors } from 'entities/Profile';
 import { useInitialEffect } from 'shared/lib/hooks/useAppDispatch/useInitialEffect/useInitialEffect';
 import { Page } from 'shared/ui/Page/Page';
+import { VStack } from 'shared/ui/Stack';
 
 
 
@@ -84,6 +85,7 @@ const ProfilePage: React.FC <ProfilePageProps> = (props) => {
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount>   
         <Page className={classNames('', {}, [className])}>
+            <VStack gap={'16'}max> 
             <ProfilePageHeader/>
             {validateErrors?.length && validateErrors.map((error)=>{
                 return (
@@ -106,6 +108,8 @@ const ProfilePage: React.FC <ProfilePageProps> = (props) => {
             
 
             />
+            </VStack>
+        
         </Page>
 
         </DynamicModuleLoader>

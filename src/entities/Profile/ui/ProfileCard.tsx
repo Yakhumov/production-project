@@ -11,6 +11,8 @@ import { CurrencySelect } from "entities/Currency";
 import { CountrySelect } from "entities/Country";
 import { Currency } from "entities/Currency/model/types/currency";
 import { Country } from "entities/Country/model/types/country";
+import { VStack } from "shared/ui/Stack";
+import { HStack } from "shared/ui/Stack";
 
 interface ProfileCardProps {
   className?: string;
@@ -48,19 +50,19 @@ export const ProfileCard: React.FC<ProfileCardProps> = (props) => {
   const { t } = useTranslation("profile");
 
   if (isLoading) {
-    <div className={classNames(cls.isLoading, {[cls.isLoading]:true}, [className])}>
+    <HStack justify={'center'}max  className={classNames(cls.isLoading, {[cls.isLoading]:true}, [className])}>
       <Loader />
-    </div>;
+    </HStack>;
   }
 
   if (error) {
-    <div className={classNames(cls.error, {}, [className, cls.error])}>
+    <HStack justify={'center'} max className={classNames(cls.error, {}, [className, cls.error])}>
       <Text
         align={TextAlign.RIGHT}
         title={t("Произошла ошибка при загрузке профиля")}
         text={t("Попробуйте обновить страницу")}
       />
-    </div>;
+    </HStack>;
   }
 
   const mods: Mods = {
@@ -68,13 +70,11 @@ export const ProfileCard: React.FC<ProfileCardProps> = (props) => {
   }
 
   return (
-    <div className={classNames(cls.ProfileCard, mods, [className])}>
-      <div className={cls.header}></div>
-      <div className={cls.data}>
+    <VStack gap={'8'} max className={classNames(cls.ProfileCard, mods, [className])}>
       {data?.avatar && (
-                    <div className={cls.avatarWrapper}>
+                    <HStack justify={'center'} max className={cls.avatarWrapper}>
                         <Avatar src={data?.avatar} />
-                    </div>
+                    </HStack>
                 )}
         <Input
           value={data?.first}
@@ -130,7 +130,6 @@ export const ProfileCard: React.FC<ProfileCardProps> = (props) => {
          onChange={onChangeCountry}
          readonly={readonly}
         />
-      </div>
-    </div>
+    </VStack>
   );
 };

@@ -3,26 +3,11 @@
     border: 2px solid var(--inverted-bg-color);
 }
 
-.header {
-    display: flex;
+.loading,
+.error {
+    height: 300px;
 }
 
-.editBtn {
-    margin-left: auto;
-}
-
-
-.input {
-    margin-top: 10px;
-}
-
-
-.avatarWrapper{
-    display: flex;
-    justify-content: center;
-    width: 100%;
-}
-
-.editing{
-    border: 2px solid black
+.editing {
+    border: 2px solid var(--inverted-primary-color);
 }

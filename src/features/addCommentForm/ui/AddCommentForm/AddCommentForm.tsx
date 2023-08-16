@@ -20,6 +20,7 @@ import {
   ReducersList,
 } from "shared/lib/components/DynamicModelLoader/DynamicModelLoader";
 import cls from "./AddCommentForm.module.scss";
+import { HStack } from "shared/ui/Stack";
 
 interface CommentFormProps {
   className?: string;
@@ -48,7 +49,7 @@ const reducers: ReducersList = {
 
   return (
     <DynamicModuleLoader reducers={reducers}>
-      <div className={classNames(cls.AddCommentForm , {}, [className])}> 
+      <HStack justify={'between'} max className={classNames(cls.AddCommentForm , {}, [className])}> 
         <Input
           className={cls.input}
           placeholder={t("Введите текст комментария")}
@@ -58,7 +59,7 @@ const reducers: ReducersList = {
         <Button theme={ThemeButton.OUTLINE} onClick={onSendHandler}>
           {t("Отправить")}
         </Button>
-      </div>
+      </HStack>
     </DynamicModuleLoader>
   );
 };
