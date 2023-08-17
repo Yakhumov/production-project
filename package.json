@@ -69,6 +69,7 @@
   },
   "dependencies": {
     "-": "^0.0.1",
+    "@headlessui/react": "^1.7.16",
     "@reduxjs/toolkit": "^1.8.0",
     "@svgr/webpack": "^6.2.1",
     "@types/jest": "^27.4.1",
