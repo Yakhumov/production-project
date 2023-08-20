@@ -57,6 +57,7 @@ export const Navbar: React.FC<NavbarProps> = memo(({ className }) => {
           {t("Создать статью")}
         </AppLink>
         <Dropdown
+          direction={'bottom left'} 
           className={cls.dropdown}
           items={[
 
