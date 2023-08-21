@@ -41,12 +41,22 @@ export default {
     //     "/node_modules/(?![@autofiy/autofiyable|@autofiy/property]).+\\.tsx$",
     // ],
 
+
     rootDir: '../../',
     setupFilesAfterEnv: ['<rootDir>config/jest/Setup.tests.ts'],
     moduleNameMapper: {
         '\\.s?css$': 'identity-obj-proxy',
         '\\.svg':path.resolve(__dirname, 'jestComponent.tsx'),
     },
+    reporters: [
+        'default',
+        ['jest-html-reporters', {
+            publicPath: '<rootDir>/reports/unit',
+            filename: 'report.html',
+            openReport: true,
+            inlineSource: true,
+        }],
+    ],
     // Indicates whether the coverage information should be collected while executing the test
     // collectCoverage: false,
 

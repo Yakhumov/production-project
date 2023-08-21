@@ -55,6 +55,8 @@
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-storybook": "^0.6.12",
     "html-webpack-plugin": "^5.5.0",
+    "jest-html-reporter": "^3.10.2",
+    "jest-html-reporters": "^3.1.4",
     "json-server": "^0.17.0",
     "mini-css-extract-plugin": "^2.5.3",
     "react-router-dom": "^6.2.1",
