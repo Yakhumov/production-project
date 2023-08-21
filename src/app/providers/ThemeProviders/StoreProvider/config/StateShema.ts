@@ -15,11 +15,13 @@ import { ArticlePageShema } from "pages/ArticlesPage";
 import { UiShema } from "features/ui/model/types/ui";
 import { ArticleDetailsRecommendationsSchema } from "pages/ArticlesPageDetalis";
 import { ArticleDetailsPageSchema } from "pages/ArticlesPageDetalis/model/types";
+import { rtkApi } from "shared/api/RtkApi";
 
 export interface StateShema {          
     counter: CounterShema;
     user: userShema;
     ui: UiShema
+    [rtkApi.reducerPath] : ReturnType<typeof rtkApi.reducer>
 
     //async
     loginForm?: LoginShema;

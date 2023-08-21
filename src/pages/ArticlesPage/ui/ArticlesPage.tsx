@@ -28,6 +28,7 @@ import { articlesPageActions } from "../model/slices/ArticlePageSlice";
 import { initArticlesPage } from "../model/services/initedArticles";
 import ArticlePageFilters from "pages/ArticlesPageFilters/ArticlesPageFilters";
 import { useSearchParams } from "react-router-dom";
+import { ArticleInfiniteList } from "pages/ArticleInfiniteList/ui/ArticleInfiniteList";
 
 interface ArticlesPageProps {
   className?: string;
@@ -41,23 +42,15 @@ const ArticlesPage = (props: ArticlesPageProps) => {
   const { className } = props;
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
-  const articles = useSelector(getArticles.selectAll);
-  const isLoading = useSelector(getArticlePageIsLoading);
-  const view = useSelector(getArticlePageView);
-  // const error = useSelector(getArticlePageError);
-  const [searchParams] = useSearchParams() 
+  const [searchParams] = useSearchParams();
 
- 
-
-const onLoadNextPart = useCallback(() => {
+  const onLoadNextPart = useCallback(() => {
     dispatch(fetchNextArticlesPage());
-}, [dispatch]);
+  }, [dispatch]);
 
-useInitialEffect(() => {
-   dispatch(initArticlesPage(searchParams))   
-});
-
-     
+  useInitialEffect(() => {
+    dispatch(initArticlesPage(searchParams));
+  });
 
   return (
     <DynamicModuleLoader reducers={reducers}>
@@ -66,7 +59,7 @@ useInitialEffect(() => {
         className={classNames(cls.ArticlesPage, {}, [className])}
       >
         <ArticlePageFilters />
-        <ArticleList  className={cls.list} isLoading={isLoading} view={view} articles={articles} />
+        <ArticleInfiniteList className={cls.list} /> 
       </Page>
     </DynamicModuleLoader>
   );

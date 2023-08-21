@@ -9,6 +9,7 @@ import { CombinedState, Reducer } from 'redux';
 import { StateShema } from './StateShema';
 import { createReducerManager } from './reducerManager';
 import { UIReducer } from 'features/ui/model/slices/uiScrollSlice';
+import { rtkApi } from 'shared/api/RtkApi';
 
 export function createReduxStore(
     initialState?: StateShema,
@@ -18,7 +19,8 @@ export function createReduxStore(
         ...asyncReducers, 
         counter: counterReducer,
         user: userReducer,
-        ui: UIReducer
+        ui: UIReducer,
+        [rtkApi.reducerPath]: rtkApi.reducer, 
     
  
     };
@@ -37,7 +39,7 @@ export function createReduxStore(
             thunk: {
                 extraArgument: extraArg,
             },
-        }),
+        }).concat(rtkApi.middleware)
     });
 
     // @ts-ignore
