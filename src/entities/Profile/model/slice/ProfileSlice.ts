@@ -65,4 +65,3 @@ export const ProfileSlice = createSlice({
 export const { actions: ProfileActions, reducer: ProfileReducer } = ProfileSlice; 
 
 export const { setReadonly, oncancelEdit, editProfile } = ProfileActions;
-export default ProfileReducer;

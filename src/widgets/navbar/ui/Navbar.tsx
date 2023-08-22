@@ -6,7 +6,7 @@ import { ThemeButton } from "shared/ui/Button/Button";
 import { LoginModal } from "features/authUser/ui/LoginModal/LoginModal";
 import { useDispatch, useSelector } from "react-redux";
 import { getAuthData } from "features/authUser";
-import { userActions } from "entities/User";
+import { isUserAdmin, isUserManager, userActions } from "entities/User";
 import cls from "./Navbar.module.scss";
 import { Text } from "shared/ui/Text";
 import { AppLink, AppLinkTheme } from "shared/ui/Applink/AppLink";
@@ -24,6 +24,8 @@ export const Navbar: React.FC<NavbarProps> = memo(({ className }) => {
   const [isAuthModal, setIsAuthModal] = useState(false);
   const authData = useSelector(getAuthData);
   const dispatch = useDispatch();
+  const isAdmin = useSelector(isUserAdmin)
+  const isManager = useSelector(isUserManager)
 
   const onCloseModal = useCallback(() => {
     setIsAuthModal(false);
@@ -40,6 +42,8 @@ export const Navbar: React.FC<NavbarProps> = memo(({ className }) => {
   useEffect(() => {
     dispatch(userActions.initAuthData());
   });
+
+  const isUserAdminPanel  = isAdmin ===   isManager 
 
   if (authData) {
     return (
@@ -61,9 +65,14 @@ export const Navbar: React.FC<NavbarProps> = memo(({ className }) => {
           className={cls.dropdown}
           items={[
 
+            ...(isUserAdminPanel ?[{
+              content: t("Админ "),
+              href: RouterPath.admin_panel
+            }]: []),
+
             {
                 content: t("Профиль "),
-                href: RouterPath.profile + authData.id
+                href: RouterPath.profile 
               },
 
             {

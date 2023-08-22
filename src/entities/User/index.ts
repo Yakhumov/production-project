@@ -3,5 +3,7 @@ import { userActions } from "./model/slice/userSlice";
 import { userShema } from "./model/types/user";
 import { User } from "./model/types/user";
 import { getUserinited } from "./model/selectors/getUserInited/getUserinited";
-
-export {userActions,userReducer, getUserinited,userShema,User}
+import { isUserAdmin } from "./model/selectors/RoleSelector/roleSelector";
+import { isUserManager } from "./model/selectors/RoleSelector/roleSelector";
+import { UseRoles } from "./model/types/user";
+export {userActions,userReducer, getUserinited,userShema,User, isUserAdmin, isUserManager, UseRoles}

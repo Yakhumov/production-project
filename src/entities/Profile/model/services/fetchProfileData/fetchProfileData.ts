@@ -1,27 +1,27 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkConfig } from 'app/providers/ThemeProviders';
-import { Profile } from 'entities/Profile/types/Profile';
-
-
+import { Profile } from 'entities/Profile';
 
 export const fetchProfileData = createAsyncThunk<
     Profile,
     void,
     ThunkConfig<string>
->(
-    'fetch/profileData',
-    async (_, thunkApi) => {
-        const { extra,  rejectWithValue } = thunkApi;
-        try {
-            const response = await extra.api.get<Profile>('/profile');
-            if(!response.data){
+    >(
+        'profile/fetchProfileData',
+        async (_, thunkApi) => {
+            const { extra, rejectWithValue } = thunkApi;
 
-                throw new Error()  
+            try {
+                const response = await extra.api.get<Profile>('/profile'); 
+
+                if (!response.data) {
+                    throw new Error();
+                }
+
+                return response.data;
+            } catch (e) {
+                console.log(e);
+                return rejectWithValue('error');
             }
-            return response.data  
-        } catch (e) {
-            console.log(e);
-            return rejectWithValue('error');
-        }
-    },
-);
+        },
+    );

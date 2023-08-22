@@ -7,23 +7,26 @@ import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 interface ProfilePageProps {
-    className?: string;
+    className?: string; 
 }
 
 const ProfilePage = ({ className }: ProfilePageProps) => {
     const { id } = useParams<{ id: string }>();
     const { t } = useTranslation('profile');
 
-  
+    // if (!id) {
+    //     return <Text text={t('Профиль не найден')} />;
+    // }
 
     return (
         <Page className={classNames('', {}, [className])}>
             <VStack gap="16" max>
-                <EditableProfileCard  />
+                <EditableProfileCard id={id} />
             </VStack>
         </Page>
     );
 };
 
 export default ProfilePage;
+
 

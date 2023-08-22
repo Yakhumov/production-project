@@ -620,21 +620,28 @@
       "id": "1",
       "username": "admin",
       "password": "123",
-      "role": "ADMIN",
+      "roles": ["ADMIN"],
       "avatar": "https://cojo.ru/wp-content/uploads/2022/12/paren-v-kapiushone-44.webp"
     },
     {
       "id": "2",
       "username": "user",
-      "password": "123",
-      "role": "USER",
+      "password": "123", 
+      "roles": ["USER"],
+      "avatar": "https://xakep.ru/wp-content/uploads/2018/05/171485/KuroiSH-hacker.jpg"
+    },
+    {
+      "id": "3",
+      "username": "manager",
+      "password": "123", 
+      "roles": ["MANAGER"],
       "avatar": "https://xakep.ru/wp-content/uploads/2018/05/171485/KuroiSH-hacker.jpg"
     }
   ],
   "profile": {
     "id": "2",
-    "first": "ulbi tv",
-    "lastname": "asf",
+    "first": "jahar",
+    "lastname": "",
     "age": 465,
     "currency": "RUB",
     "country": "Armenia",

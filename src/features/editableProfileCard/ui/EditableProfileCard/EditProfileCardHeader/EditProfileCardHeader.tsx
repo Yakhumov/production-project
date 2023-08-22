@@ -8,7 +8,7 @@ import { Text } from "shared/ui/Text";
 import { Button, ThemeButton } from "shared/ui/Button/Button";
 import { getAuthData } from "features/authUser";
 import { ProfileActions, updateProfileData } from "entities/Profile";
-import { getReadOnly } from "entities/Profile";
+import { getProfileReadOnly } from "entities/Profile";
 import { getProfileData } from "entities/Profile";
 import { ButtonSize } from "shared/ui/Button/Button";
 
@@ -16,15 +16,15 @@ interface EditableProfileCardHeaderProps {
   className?: string;
 }
 
-export const EditableProfileCardHeader = memo(
+export const EditProfileCardHeader = memo(
   (props: EditableProfileCardHeaderProps) => {
     const { className } = props;
 
     const { t } = useTranslation("profile");
-    const authData = useSelector(getAuthData);
-    const profileData = useSelector(getProfileData);
-    const canEdit = authData?.id === profileData?.id 
-    const readonly = useSelector(getReadOnly);
+    const authData = useSelector(getAuthData)
+    const profileData = useSelector(getProfileData)
+    // const cancelEdit = authData?.id == profileData?.id  
+    const readonly = useSelector(getProfileReadOnly);
     const dispatch = useAppDispatch();
 
     const onEdit = useCallback(() => {
@@ -42,13 +42,13 @@ export const EditableProfileCardHeader = memo(
     return (
       <HStack max justify="between" className={classNames("", {}, [className])}>
         <Text title={t("Профиль")} />
-        {canEdit && (
           <div>
             {readonly ? (
               <Button
                 size={ButtonSize.M}
-                theme={ThemeButton.OUTLINE}
+                theme={ThemeButton.CLEAR}
                 onClick={onEdit}
+                data-testid="EditProfileCardHeader.EditButton"
               >
                 {t("Редактировать")}
               </Button>
@@ -58,6 +58,7 @@ export const EditableProfileCardHeader = memo(
                   size={ButtonSize.M}
                   theme={ThemeButton.OUTLINE_RED}
                   onClick={onCancelEdit}
+                  data-testid="EditProfileCardHeader.CanEditButton"
                 >
                   {t("Отменить")}
                 </Button>
@@ -65,13 +66,13 @@ export const EditableProfileCardHeader = memo(
                   size={ButtonSize.M}
                   theme={ThemeButton.CLEAR}
                   onClick={onSave}
+                  data-testid="EditProfileCardHeader.SaveButton"
                 >
                   {t("Сохранить")}
                 </Button>
               </HStack>
             )}
           </div>
-        )}
       </HStack>
     );
   }

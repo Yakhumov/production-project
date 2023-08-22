@@ -10,7 +10,7 @@ export type ReducersList = {
 
 interface DynamicModuleLoaderProps {
     reducers: ReducersList;
-    removeAfterUnmount?: boolean;
+    removeAfterUnmount?: true 
 }
 
 export const DynamicModuleLoader: FC<DynamicModuleLoaderProps> = (props) => {

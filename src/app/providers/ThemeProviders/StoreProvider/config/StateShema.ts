@@ -13,7 +13,7 @@ import { ArticleDetailsCommentsSchema } from "pages/ArticlesPageDetalis";
 import { AddCommentFormShema } from "features/addCommentForm/model/types/AddCommentForm";
 import { ArticlePageShema } from "pages/ArticlesPage";
 import { UiShema } from "features/ui/model/types/ui";
-import { ArticleDetailsRecommendationsSchema } from "pages/ArticlesPageDetalis";
+
 import { ArticleDetailsPageSchema } from "pages/ArticlesPageDetalis/model/types";
 import { rtkApi } from "shared/api/RtkApi";
 
@@ -25,7 +25,7 @@ export interface StateShema {
 
     //async
     loginForm?: LoginShema;
-    profile?: ProfileShema;
+    profile?: ProfileShema
     articleDetails?: ArticlesDetailsSchema
     addCommentForm?: AddCommentFormShema
     articlesPage?: ArticlePageShema
