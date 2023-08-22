@@ -12,13 +12,14 @@ import { addCommentForArticle } from "pages/ArticlesPageDetalis/model/services/a
 import { useInitialEffect } from "shared/lib/hooks/useAppDispatch/useInitialEffect/useInitialEffect";
 import { fetchCommentsByArticleId } from "pages/ArticlesPageDetalis/model/services/fetchCommentArticleById/fetchCommentArticleById";
 import { VStack } from "shared/ui/Stack";
+import { classNames } from "shared/lib/classNames/classNames";
 interface ArticleDetailsComments {
   className?: string;
   id: string;
 }
 
 export const ArticleDetailsComments = memo((props: ArticleDetailsComments) => {
-  const {id } = props;
+  const {id, className } = props;
   const { t } = useTranslation();
   const commentIsLoading = useSelector(CommentsIsLoading);
   const comments = useSelector(getArticleComments.selectAll);
@@ -35,7 +36,7 @@ export const ArticleDetailsComments = memo((props: ArticleDetailsComments) => {
     [dispatch]
   );
   return (
-    <VStack gap="16">
+    <VStack gap="16" max  className={classNames('', {}, [className])}>
       <Text className={""} title={t("Комментарии")} />
       <CommentForm onSendComment={onSendComment} />
       <CommentList isLoading={commentIsLoading} comments={comments} />
