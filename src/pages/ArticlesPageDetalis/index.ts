@@ -5,4 +5,4 @@ import { ArticleDetailsPageSchema } from "./model/types";
 import {ArticleDetailsPageHeader} from "pages/ArticleDetailsPageHeader/ArticleDetailsPageHeader";
 
 export {ArticlesDetailsPageAsync as ArticlesPageDetails}   
-export {ArticleDetailsCommentsSchema,ArticleDetailsRecommendationsSchema,ArticleDetailsPageHeader, ArticleDetailsPageSchema}  
+export  {ArticleDetailsCommentsSchema,ArticleDetailsRecommendationsSchema,ArticleDetailsPageHeader, ArticleDetailsPageSchema}  

@@ -6,4 +6,4 @@ import { getUserinited } from "./model/selectors/getUserInited/getUserinited";
 import { isUserAdmin } from "./model/selectors/RoleSelector/roleSelector";
 import { isUserManager } from "./model/selectors/RoleSelector/roleSelector";
 import { UseRoles } from "./model/types/user";
-export {userActions,userReducer, getUserinited,userShema,User, isUserAdmin, isUserManager, UseRoles}
+export   {userActions,userReducer, getUserinited,userShema,User, isUserAdmin, isUserManager, UseRoles}
