@@ -11,20 +11,21 @@ import { Portal } from "shared/ui/Portal/Portal";
 import { useTheme } from "app/providers/ThemeProviders";
 import cls from "./Modal.module.scss";
 import { MutableRefObject } from "react";
+import { Overlay } from "../Overlay/Overlay";
 
 interface ModalProps {
   className: string;
   children?: ReactNode;
   isOpen?: boolean;
   onClose?: () => void;
-  lazy: boolean
+  lazy: boolean;
 }
 
 export const Modal = (props: ModalProps) => {
   const { className, children, isOpen, onClose } = props;
 
   const [isClosing, setIsClosing] = useState(false);
-  const [isMounted, setIsMounted] = useState(false)
+  const [isMounted, setIsMounted] = useState(false);
   const timerRef = useRef() as MutableRefObject<ReturnType<typeof setTimeout>>;
   const { theme } = useTheme();
 
@@ -47,15 +48,11 @@ export const Modal = (props: ModalProps) => {
     [closeHandler]
   );
 
-  useEffect(()=>{
-    if(isOpen){
-      setIsMounted(true)
+  useEffect(() => {
+    if (isOpen) {
+      setIsMounted(true);
     }
-  },[isOpen])
-
-  const onContentClick = (e: React.MouseEvent) => {
-    e.stopPropagation();
-  };
+  }, [isOpen]);
 
   useEffect(() => {
     if (isOpen) {
@@ -68,24 +65,23 @@ export const Modal = (props: ModalProps) => {
     };
   }, [isOpen, onKeyDown]);
 
-  const mods:Mods  = {
+  const mods: Mods = {
     [cls.opened]: isOpen,
     [cls.isClosing]: isClosing,
   };
 
   //@ts-ignore
-  if (lazy && !isMounted) { 
+  if (lazy && !isMounted) {
     return null;
-}
+  }
 
   return (
     <Portal>
-      <div className={classNames(cls.Modal, mods, [className, theme])}>
-        <div className={cls.overlay} onClick={closeHandler}>
-          <div className={cls.content} onClick={onContentClick}>
-            {children}
-          </div>
-        </div>
+      <div
+        className={classNames(cls.Modal, mods, [className, theme, "app_modal"])}
+      >
+        <Overlay onClick={closeHandler} />
+        <div className={cls.content}>{children}</div>
       </div>
     </Portal>
   );
