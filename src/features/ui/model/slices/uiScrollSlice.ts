@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { loginByUsername } from 'features/authUser';
 import { UiShema } from '../types/ui';
 import path from 'path';
 

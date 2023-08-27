@@ -14,7 +14,7 @@ import { MutableRefObject } from "react";
 import { Overlay } from "../Overlay/Overlay";
 
 interface ModalProps {
-  className: string;
+  className?: string;
   children?: ReactNode;
   isOpen?: boolean;
   onClose?: () => void;

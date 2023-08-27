@@ -9,7 +9,7 @@ export default defineConfig({
     ],
     resolve: {
         alias: [
-            { find: '*', replacement: '/src' },
+            { find: '../', replacement: '/src' },
         ],
     },   
     define: {

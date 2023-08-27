@@ -1,7 +1,7 @@
-import { Counter } from 'entities/Counter';
-import React from 'react';
+import { RatingCard } from "entities/Rating";
 import {useTranslation} from "react-i18next";
 import { Page } from 'shared/ui/Page/Page';
+import { StarRating } from 'shared/ui/StarsRating/StarRating';
 
 const MainPage = () => {
     const {t} = useTranslation();
@@ -9,6 +9,7 @@ const MainPage = () => {
     return (
         <Page >         
             {t('Главная страница')} 
+
         </Page>
     );
 };
