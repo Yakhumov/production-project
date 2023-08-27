@@ -12,17 +12,19 @@ export enum CardTheme {
 interface CardProps extends HTMLAttributes<HTMLDivElement> {
     className?: string;
     children: ReactNode;
-    theme?: CardTheme
+    theme?: CardTheme;
+    max?: boolean
 }
 
 
 
 export const Card = memo((props: CardProps) => {
-    const { className, children, theme, ...otherProps } = props;
+    const { className, children, theme, max, ...otherProps } = props;
 
     const mods: Mods={
         //@ts-ignore
-        [cls[theme]] : true  
+        [cls[theme]] : true  ,
+        [cls.max] : max  
     }
 
     return (

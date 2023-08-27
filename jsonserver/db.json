@@ -682,5 +682,22 @@
     "city": "Moscow",
     "username": "ulbi tv",
     "avatar": "https://avatars.mds.yandex.net/i?id=dcffe36decc0ae604344cc7c2f218c56a3c17c95-7548535-images-thumbs&n=13"
-  }
+  },
+  "article-ratings": [
+    {
+      "id": "1",
+      "rate": 4,
+      "feedback": "Хорошая статья",
+      "userId": "1",
+      "articleId": "1"
+    },
+    {
+      "id": "2",
+      "rate": 4,
+      "feedback": "Хорошая статья",
+      "userId": "1",
+      "articleId": "2"
+    }              
+  ]
+
 }

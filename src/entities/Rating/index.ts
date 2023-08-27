@@ -1,2 +1,3 @@
 import { RatingCard } from "./ui/RatingCard/RatingCard";
-export {RatingCard}
+import { Rating } from "entities/Rating/model/types/rating";
+export {RatingCard, Rating}
