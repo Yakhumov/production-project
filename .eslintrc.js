@@ -58,7 +58,7 @@ module.exports = {
         ignoreComments: true,
       },
     ],
-    "jahar-plugin/path-cheker": 'error',
+    "jahar-plugin/path-cheker": ['error',{alias: '@' }], 
   },
   globals: {
     __IS_DEV__: true,

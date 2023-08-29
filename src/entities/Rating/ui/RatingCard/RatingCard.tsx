@@ -72,7 +72,7 @@ export const RatingCard = memo((props: RatingCardProps) => {
     return (
         <Card className={classNames('', {}, [className])} max > 
             <VStack align="center" gap="8" max >
-                <Text title={title} />
+                <Text title={ starsCount ? 'Спасибо за оценку!' :  title} /> 
                 <StarRating selectedStars={starsCount} size={40} onSelect={onSelectStars} />
             </VStack>
             <BrowserView>
@@ -83,7 +83,7 @@ export const RatingCard = memo((props: RatingCardProps) => {
                             <Button onClick={cancelHandle} theme={ThemeButton.OUTLINE_RED}>
                                 {t('Закрыть')}
                             </Button>
-                            <Button onClick={acceptHandle}>
+                            <Button onClick={acceptHandle} theme={ThemeButton.CLEAR}>
                                 {t('Отправить')}
                             </Button>
                         </HStack>

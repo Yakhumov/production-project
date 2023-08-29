@@ -31,7 +31,7 @@ const ArticleRateApi = rtkApi.injectEndpoints({
     endpoints: (build) => ({
       getArticleRate: build.mutation<void , getArticleRateProps>({
         query: (args) => ({  
-          url: "/article-ratings",
+          url: "/article-ratings", 
           method: 'POST',
           body: args
         }),

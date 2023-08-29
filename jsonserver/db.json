@@ -697,7 +697,34 @@
       "feedback": "Хорошая статья",
       "userId": "1",
       "articleId": "2"
-    }              
+    },
+    {
+      "userId": "1",
+      "articleId": "3",
+      "rate": 3,
+      "feedback": "fsg",
+      "id": "7hISJKh"
+    },
+    {
+      "userId": "1",
+      "articleId": "5",
+      "rate": 4,
+      "feedback": "",
+      "id": "EPz7Pja"
+    },
+    {
+      "userId": "1",
+      "articleId": "7",
+      "rate": 2,
+      "feedback": "",
+      "id": "ZIVoFaw"
+    },
+    {
+      "userId": "1",
+      "articleId": "8",
+      "rate": 3,
+      "feedback": "Статья говно",
+      "id": "1N_rx4R"
+    }
   ]
-
 }
