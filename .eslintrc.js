@@ -59,6 +59,14 @@ module.exports = {
       },
     ],
     "jahar-plugin/path-cheker": ['error',{alias: '@' }], 
+    "jahar-plugin/layer-imports": [
+      'error',
+      {
+          alias: '@',
+          ignoreImportPatterns: ['**/StoreProvider', '**/testing'],
+      },
+  ],
+
   },
   globals: {
     __IS_DEV__: true,
