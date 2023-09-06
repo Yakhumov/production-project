@@ -1,18 +1,16 @@
-import { RatingCard } from "entities/Rating";
-import {useTranslation} from "react-i18next";
+import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Page } from 'shared/ui/Page/Page';
-import { StarRating } from 'shared/ui/StarsRating/StarRating';
 
 const MainPage = () => {
-    const {t} = useTranslation();
-
+    const { t } = useTranslation();
     return (
-        <Page data-testid="MainPage">          
-            {t('Главная страница')}  
-
+        <Page data-testid="MainPage">
+            {t('Главная страница')}
         </Page>
     );
 };
 
-export default MainPage; 
+export default MainPage;
+
 
