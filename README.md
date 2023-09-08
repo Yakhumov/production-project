@@ -26,8 +26,6 @@ npm run start:dev или npm run start:dev:vite - запуск сервера + 
 - `npm run test:ui:ok` - Подтверждение новых скриншотов
 - `npm run test:ui:ci` - Запуск скриншотных тестов в CI
 - `npm run test:ui:report` - Генерация полного отчета для скриншотных тестов
-- `npm run test:ui:json` - Генерация json отчета для скриншотных тестов
-- `npm run test:ui:html` - Генерация HTML отчета для скриншотных тестов
 - `npm run storybook` - запуск Storybook
 - `npm run storybook:build` - Сборка storybook билда
 - `npm run prepare` - прекоммит хуки
@@ -62,7 +60,7 @@ npm run start:dev или npm run start:dev:vite - запуск сервера + 
 3) Скриншотное тестирование с loki `npm run test:ui`
 4) e2e тестирование с Cypress `npm run test:e2e`
 
-Подробнее о тестах - [документация тестирование](/docs/tests.md)
+Подробнее о тестах - [документация тестирование](/docs/tests.md) 
 
 ----
 
