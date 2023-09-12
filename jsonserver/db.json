@@ -673,15 +673,15 @@
     }
   ],
   "profile": {
-    "id": "2",
-    "first": "jahar",
-    "lastname": "",
+    "id": "4",
+    "first": "test",
+    "lastname": "user",
     "age": 465,
-    "currency": "RUB",
-    "country": "Armenia",
+    "currency": "EUR",
+    "country": "Ukraine",
     "city": "Moscow",
-    "username": "ulbi tv",
-    "avatar": "https://avatars.mds.yandex.net/i?id=dcffe36decc0ae604344cc7c2f218c56a3c17c95-7548535-images-thumbs&n=13"
+    "username": "testuser",
+    "avatar": "https://xakep.ru/wp-content/uploads/2018/05/171485/KuroiSH-hacker.jpg"
   },
   "article-ratings": [
     {
