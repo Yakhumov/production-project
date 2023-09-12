@@ -15,8 +15,8 @@ describe('Пользователь заходит на страницу проф
         cy.getByTestId('ProfileCard.firstname').should('have.value', 'test');
     });
     it('И редактирует его', () => {
-        cy.updateProfile('firstname', 'lastname');
-        cy.getByTestId('ProfileCard.firstname').should('have.value','firstname');
-        cy.getByTestId('ProfileCard.lastname').should('have.value', 'lastname'); 
+        cy.updateProfile('firstname', 'lastname'); 
+        cy.getByTestId('ProfileCard.firstname').should('have.value', 'firstname');
+        cy.getByTestId('ProfileCard.lastname').should('have.value', 'lastname');
     });
 });

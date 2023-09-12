@@ -4,6 +4,7 @@ import { memo } from 'react';
 import { Text } from 'shared/ui/Text';
 import { ArticleList } from 'entities/Article/ui/ArticleList/ArticleList';
 import { userArticleRecommendationsList } from 'features/articleRecommendationsList/api/ArticleRecommendationsList';
+import { VStack } from 'shared/ui/Stack';
 
 
 interface ArticleRecommendationsListProps {
@@ -17,15 +18,17 @@ export const ArticleRecommendationsList = memo((props: ArticleRecommendationsLis
     const { t } = useTranslation();
     const { data: articles  } = userArticleRecommendationsList(3) 
 
-    console.log(articles)
+   
     
     return (
-        <div className={classNames('', {}, [className])}>
+        <VStack gap={'8'} className={classNames('', {}, [className])}
+        data-testid={'ArticleRecommendationsList'}
+        >
                <Text className={''} title={t("Рекомендуем")} />
           <ArticleList 
             target="_blank"
             articles={articles}
           />
-        </div>
+        </VStack> 
     );
 });

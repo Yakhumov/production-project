@@ -70,7 +70,7 @@ export const RatingCard = memo((props: RatingCardProps) => {
     );
 
     return (
-        <Card className={classNames('', {}, [className])} max > 
+        <Card className={classNames('', {}, [className])} max  data-testid={'RatingCard'}> 
             <VStack align="center" gap="8" max >
                 <Text title={ starsCount ? 'Спасибо за оценку!' :  title} /> 
                 <StarRating selectedStars={starsCount} size={40} onSelect={onSelectStars} />
@@ -80,10 +80,10 @@ export const RatingCard = memo((props: RatingCardProps) => {
                     <VStack max gap="32">
                         {modalContent}
                         <HStack max gap="16" justify="end">
-                            <Button onClick={cancelHandle} theme={ThemeButton.OUTLINE_RED}>
+                            <Button   data-testid="RatingCard.Close" onClick={cancelHandle} theme={ThemeButton.OUTLINE_RED}>
                                 {t('Закрыть')}
                             </Button>
-                            <Button onClick={acceptHandle} theme={ThemeButton.CLEAR}>
+                            <Button   data-testid="RatingCard.Send" onClick={acceptHandle} theme={ThemeButton.CLEAR}>
                                 {t('Отправить')}
                             </Button>
                         </HStack>
