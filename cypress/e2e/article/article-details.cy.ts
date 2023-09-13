@@ -23,7 +23,8 @@ describe('Пользователь заходит на страницу  ста�
     cy.addComment('text');
     cy.getByTestId('CommentCard.Content').should('have.length', 1);
 });
-it('И оставляет оценку', () => {
+it('И оставляет оценку (пример с стабом на фикстурах)', () => {
+    cy.intercept('GET', '**/articles/*', { fixture: 'article-details.json' });
     cy.getByTestId('ArticleDetails');
     cy.getByTestId('RatingCard').scrollIntoView();
     cy.setRate(4 , 'feedback')  
