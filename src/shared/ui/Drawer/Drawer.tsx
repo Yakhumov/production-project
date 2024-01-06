@@ -27,6 +27,6 @@ export const Drawer = memo((props: DrawerProps) => {
       <Overlay onClick={onClose}/>
         <div className={cls.content}>{children}</div>
       </div>
-    </Portal>
+    </Portal> 
   );
 });

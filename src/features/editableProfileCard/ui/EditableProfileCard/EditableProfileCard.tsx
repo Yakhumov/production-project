@@ -9,10 +9,7 @@ import { Country } from "entities/Country/model/types/country";
 import { Text } from "shared/ui/Text";
 import { TextTheme } from "shared/ui/Text/ui/Text";
 import { ProfileCard } from "entities/Profile";
-import {
-  DynamicModuleLoader,
-  ReducersList,
-} from "shared/lib/components/DynamicModelLoader/DynamicModelLoader";
+import {DynamicModuleLoader,ReducersList,} from "shared/lib/components/DynamicModelLoader/DynamicModelLoader";
 import { VStack } from "shared/ui/Stack";
 import { getProfileForm } from "entities/Profile";
 import { fetchProfileData } from "entities/Profile";
@@ -29,16 +26,16 @@ interface EditableProfileCardProps {
   id?: string;
 }
 
-const reducers: ReducersList ={
-  profile: ProfileReducer
-}
+const reducers: ReducersList = {
+  profile: ProfileReducer,
+};
 
 export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
   const { className, id } = props;
   const { t } = useTranslation("profile");
 
-  const dispatch = useAppDispatch() 
-  const formData = useSelector(getProfileForm)
+  const dispatch = useAppDispatch();
+  const formData = useSelector(getProfileForm);
   const isLoading = useSelector(getProfileIsloading);
   const error = useSelector(getProfileIsError);
   const readonly = useSelector(getProfileReadOnly);
@@ -52,14 +49,14 @@ export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
     [ValidateProfileErrors.INCORRECT_AGE]: t("Некорректный возраст"),
   };
 
- useInitialEffect(()=>{
-  dispatch(fetchProfileData()) 
- })
+  useInitialEffect(() => {
+    dispatch(fetchProfileData());
+  });
 
   const onChangeFirstname = useCallback(
     (value?: string) => {
       dispatch(ProfileActions.editProfile({ first: value || "" }));
-    },
+    },   
     [dispatch]
   );
 
@@ -122,10 +119,10 @@ export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
               key={err}
               theme={TextTheme.ERROR}
               text={validateErrorTranslates[err]}
-              data-testId={'EditableProfileCard.EditError'} 
+              data-testId={"EditableProfileCard.EditError"}
             />
           ))}
-        <ProfileCard 
+        <ProfileCard
           data={formData}
           isLoading={isLoading}
           error={error}
